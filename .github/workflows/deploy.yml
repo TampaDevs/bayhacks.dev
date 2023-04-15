@@ -11,6 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      # TODO: fix vite bundler issue
       # - uses: actions/setup-node@v3
       #   with: # available versions = https://github.com/actions/node-versions/blob/main/versions-manifest.json
       #     node-version: 18

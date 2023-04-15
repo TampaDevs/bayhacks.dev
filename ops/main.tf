@@ -75,4 +75,11 @@ resource "aws_s3_object" "object" {
   key    = replace(each.value, "../dist", "")
   source = "${path.module}/${each.value}"
   content_type = endswith(each.value, ".js") ? "text/javascript" : "text/html"
+  # TODO: remove if vite bundler issue is resolved
+  etag = data.external.hash.result["hash"]
+}
+
+# TODO: remove if vite bundler issue is resolved
+data "external" "hash" {
+  program = ["${path.module}/hash.sh", "../dist"]
 }
