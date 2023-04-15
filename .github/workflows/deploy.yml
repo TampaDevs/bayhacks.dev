@@ -1,0 +1,28 @@
+name: bayhacks
+permissions: # required for oidc
+  id-token: write
+  contents: read
+on:
+  push:
+    branchs: [main]
+jobs:
+  deploy:
+    if: "! contains(github.event.commits[0].message, '[no ci]')"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+      with: # available versions = https://github.com/actions/node-versions/blob/main/versions-manifest.json
+        node-version: 18
+      - uses: aws-actions/configure-aws-credentials@v1
+        with:
+          role-to-assume: arn:aws:iam::919759177803:role/gh-action-assume
+          aws-region: us-east-1
+      - uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: 1.4.5 # https://releases.hashicorp.com/terraform
+      - name: Deploy
+        working-directory: ./ops
+        run: |
+          terraform init
+          terraform apply -auto-approve

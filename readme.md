@@ -47,6 +47,7 @@ Can I use render order for creating a seamless flow?
 - [viewer 3](https://sandbox.babylonjs.com)
 - [ship, link and indicate changes made](https://sketchfab.com/3d-models/pirate-viva-34f6cb31cf264b79b8f023f769057fd0)
 - [water, must include license](https://github.com/JMBeresford/lab/blob/main/LICENSE)
+- [how to create a theater sheet](https://tympanus.net/codrops/2023/02/14/animate-a-camera-fly-through-on-scroll-using-theatre-js-and-react-three-fiber)
 
 # Examples
 - [particle effect, can be used for under water](https://codepen.io/tr13ze/pen/pbjWwg?editors=0110)
