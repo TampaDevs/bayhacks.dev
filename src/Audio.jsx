@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react'
+import React, {useState, useEffect} from 'react'
 
 export default function AudioPlayer(file)  {
   const [audio] = useState(new Audio(file));

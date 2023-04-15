@@ -1,7 +1,7 @@
 import React, { useRef } from 'react'
 import { Cloud, Float, useGLTF } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
-import Text from './text'
+import Text from './Text.jsx'
 
 export default function Ships() {
   const { nodes, materials } = useGLTF('/ship.glb')
