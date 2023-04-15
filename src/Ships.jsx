@@ -29,12 +29,12 @@ export default function Ships() {
     if (shipR1 > .2 || shipR1 < -.2) {
       increasing = !increasing
     }
-    if (splashRef.current) splashRef.current.rotation.set(-2.71, -0.94, rotation * 10)
-    if (splashRef2.current) splashRef2.current.rotation.set(-2.71, -0.94, rotation * 20)
-    if (shipRef.current) shipRef.current.rotation.set(shipR1, 0, shipR2)
-    if (cloudMid.current) cloudMid.current.rotation.set(-Math.PI / 2, 0, rotation)
-    if (cloudTop.current) cloudTop.current.rotation.set(-Math.PI / 2, 0, rotation * -1)
-    if (cloudBot.current) cloudBot.current.rotation.set(-Math.PI / 2, 0, rotation * -1)
+    splashRef.current.rotation.set(-2.71, -0.94, rotation * 10)
+    splashRef2.current.rotation.set(-2.71, -0.94, rotation * 20)
+    shipRef?.current.rotation.set(shipR1, 0, shipR2)
+    cloudMid.current.rotation.set(-Math.PI / 2, 0, rotation)
+    cloudTop.current.rotation.set(-Math.PI / 2, 0, rotation * -1)
+    cloudBot.current.rotation.set(-Math.PI / 2, 0, rotation * -1)
   })
 
   return (
@@ -112,7 +112,7 @@ function SunkenShip({nodes, materials}) {
       <Cloud position={[0,2,30]} args={[3, 2]} />
       <Cloud position={[0,3,30]} args={[3, 2]} />
       <group dispose={null} position={[0,-9,28]} scale={.10} rotation={[Math.PI/5, Math.PI/4, 0]}>
-        <group rotation={[0,0,0]} ref={shipRef}>
+        <group rotation={[0,0,0]}>
           <group position={[0, 73, 0]} rotation={[-Math.PI / 2, 0, 0]} scale={11.39}>
             <mesh geometry={nodes.Cylinder001_Boat_0.geometry} material={materials.Boat} />
           </group>
