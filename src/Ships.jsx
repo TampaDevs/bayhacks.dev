@@ -1,7 +1,7 @@
 import React, { useRef } from 'react'
 import { Cloud, Float, useGLTF } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
-import Text from './Text.jsx'
+import Text from './text'
 
 export default function Ships() {
   const { nodes, materials } = useGLTF('/ship.glb')
@@ -112,7 +112,7 @@ function SunkenShip({nodes, materials}) {
       <Cloud position={[0,2,30]} args={[3, 2]} />
       <Cloud position={[0,3,30]} args={[3, 2]} />
       <group dispose={null} position={[0,-9,28]} scale={.10} rotation={[Math.PI/5, Math.PI/4, 0]}>
-        <group rotation={[0,0,0]}>
+        <group rotation={[0,0,0]} ref={shipRef}>
           <group position={[0, 73, 0]} rotation={[-Math.PI / 2, 0, 0]} scale={11.39}>
             <mesh geometry={nodes.Cylinder001_Boat_0.geometry} material={materials.Boat} />
           </group>

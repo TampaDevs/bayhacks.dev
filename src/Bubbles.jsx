@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react'
 import { Float, MeshReflectorMaterial, Sphere, useTexture, Center } from "@react-three/drei"
-import Text from './Text.jsx'
+import Text from './text'
 
 export default function Bubbles() {
   const texture = useTexture("/nx.jpg")

@@ -5,13 +5,13 @@ import { ScrollControls, useScroll, Environment, SpotLight } from "@react-three/
 import { SheetProvider, PerspectiveCamera, useCurrentSheet } from "@theatre/r3f"
 import { getProject, val } from "@theatre/core"
 import wavesAudio from '/waves.mp3'
-import Model from './Model'
-import Triangles from "./Triangles"
-import Ships from "./Ships"
-import Water from "./Water"
-import SkyCustom from "./Sky"
-import useAudio from './Audio'
-import Bubbles from './Bubbles'
+import Model from './model'
+import Triangles from "./triangles"
+import Ships from "./ships"
+import Water from "./water"
+import SkyCustom from "./sky"
+import useAudio from './audio'
+import Bubbles from './bubbles'
 import state from "./fly.json"
 
 export default function App() {

@@ -1,6 +1,6 @@
 import React from 'react'
 import { useGLTF } from '@react-three/drei'
-import Text from './Text.jsx'
+import Text from './text'
 
 useGLTF.preload('/canyon.glb')
 useGLTF.preload('/temple.glb')
