@@ -2,8 +2,8 @@ import * as THREE from "three"
 import React, { useRef, useEffect, useState } from "react"
 import { Canvas, useThree, useLoader, useFrame } from "@react-three/fiber"
 import { ScrollControls, useScroll, Environment, SpotLight, Sky, Plane, OrbitControls } from "@react-three/drei"
-import { SheetProvider, PerspectiveCamera, useCurrentSheet } from "@theatre/r3f"
-import { getProject, val } from "@theatre/core"
+// import { SheetProvider, PerspectiveCamera, useCurrentSheet } from "@theatre/r3f"
+// import { getProject, val } from "@theatre/core"
 import wavesAudio from '/waves.mp3'
 import Temple from './Temple.jsx'
 import Effect from "./Effect.jsx"
@@ -59,29 +59,29 @@ export default function App() {
   )
 }
 
-function CustomCamera() {
-  const sheet = useCurrentSheet();
-  const scroll = useScroll();
+// function CustomCamera() {
+//   const sheet = useCurrentSheet();
+//   const scroll = useScroll();
 
-  // our callback will run on every animation frame
-  useFrame(() => {
-    // the length of our sequence
-    const sequenceLength = val(sheet.sequence.pointer.length);
-    // update the "position" of the playhead in the sequence, as a fraction of its whole length
-    sheet.sequence.position = scroll.offset * sequenceLength;
-  });
+//   // our callback will run on every animation frame
+//   useFrame(() => {
+//     // the length of our sequence
+//     const sequenceLength = val(sheet.sequence.pointer.length);
+//     // update the "position" of the playhead in the sequence, as a fraction of its whole length
+//     sheet.sequence.position = scroll.offset * sequenceLength;
+//   });
 
-  return (
-    <PerspectiveCamera
-      theatreKey="Camera"
-      makeDefault
-      position={[0, 0, 0]}
-      fov={90}
-      near={0.1}
-      far={70}
-    />
-  )
-}
+//   return (
+//     <PerspectiveCamera
+//       theatreKey="Camera"
+//       makeDefault
+//       position={[0, 0, 0]}
+//       fov={90}
+//       near={0.1}
+//       far={70}
+//     />
+//   )
+// }
 
           {/* <Cartoon /> */}
 

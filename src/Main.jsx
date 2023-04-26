@@ -1,13 +1,13 @@
 import React, { Suspense } from 'react'
 import ReactDOM from 'react-dom/client'
-import studio from "@theatre/studio"
-import extension from "@theatre/r3f/dist/extension"
+// import studio from "@theatre/studio"
+// import extension from "@theatre/r3f/dist/extension"
 import App from './App.jsx'
 import { Stats, useProgress } from "@react-three/drei"
 import loadingIcon from '/loading.jpg'
 
-studio.extend(extension)
-studio.initialize()
+// studio.extend(extension)
+// studio.initialize()
 
 // function Loader() {
 //   const { active, progress, errors, item, loaded, total } = useProgress()
