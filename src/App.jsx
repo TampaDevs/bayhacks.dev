@@ -17,12 +17,16 @@ import state from "./fly.json"
 
 // export const sheet = getProject("Fly Through").sheet("Scene")
 
+export const safari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent)
+
 export default function App() {
   const [playingAudio, playWavesAudio] = useAudio(wavesAudio)
   // const sheet = getProject("Fly Through", { state }).sheet("Scene")
 
   useEffect(() => {
     // playWavesAudio()
+    // var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent)
+    // console.log('safari', isSafari)
   }, [])
 
   return (
@@ -36,15 +40,23 @@ export default function App() {
         {/* <directionalLight intensity={1} position={[2, 2, 2]} castShadow shadow-mapSize-height={2048} shadow-mapSize-width={2048} /> */}
         {/* <Bubbles /> */}
         {/* <Temple /> */}
-        {/* <Plane rotation={[-Math.PI/2,0,0]} args={[10000,10000]} position={[0,-.7,0]}>
-          <meshLambertMaterial color="#4183ff" />
-        </Plane> */}
         {/* <WelcomeText /> */}
         <OrbitControls minDistance={20} maxDistance={50} maxPolarAngle={1.5} />
         <Ships />
-        <Water />
-        {/* <Sky /> */}
-        <SkyCustom />
+        
+        {
+          safari
+          ? <>
+              <Plane rotation={[-Math.PI/2,0,0]} args={[10000,10000]} position={[0,-.7,0]}>
+                <meshLambertMaterial color="#4183ff" />
+              </Plane>
+              <Sky />
+            </>
+          : <>
+              <Water />
+              <SkyCustom />
+            </>
+        }
         {/* <Map />
         <Sword /> */}
 
