@@ -20,8 +20,7 @@ function isMobile() {
   return check;
 }
 
-export default function App() {
-
+export default function App() {  
   return (
     <ScrollControls pages={5} distance={0.9036}>
       <SheetProvider sheet={sheet}>
@@ -30,9 +29,6 @@ export default function App() {
         <Ships />
       </SheetProvider>
       <ambientLight intensity={.5} />
-      {/* <WelcomeText /> */}
-      {/* <OrbitControls minDistance={20} maxDistance={50} maxPolarAngle={1.5} /> */}
-      
       {
         safari
         ? <>

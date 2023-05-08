@@ -31,9 +31,11 @@ export default function Ships() {
   const cloudBot = useRef(null)
   const splashRef = useRef(null)
   const splashRef2 = useRef(null)
-  
+
   useEffect(() => {
-    playWavesAudio()
+    window.addEventListener("click", () => {
+      if (!playingAudio) playWavesAudio()
+    })
   }, [])
 
   useFrame((state, delta) => {
