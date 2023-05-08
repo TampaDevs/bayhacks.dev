@@ -10,17 +10,18 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@react-three/drei": "^9.57.0",
-    "@react-three/fiber": "^8.11.9",
+    "@react-three/drei": "^9.66.3",
+    "@react-three/fiber": "^8.13.0",
     "@theatre/core": "^0.6.0",
     "@theatre/r3f": "^0.6.0",
     "@theatre/studio": "^0.6.0",
-    "maath": "^0.5.2",
+    "lottie-react": "^2.4.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "three": "^0.150.1"
+    "three": "^0.152.2",
+    "three-mesh-ui": "^6.5.4"
   },
   "devDependencies": {
-    "vite": "^4.1.4"
+    "vite": "^4.3.5"
   }
 }

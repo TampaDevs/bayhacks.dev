@@ -1,7 +1,9 @@
-import React, { useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { Cloud, Float, useGLTF } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
-import Text from './Text.jsx'
+import * as THREE from "three"
+import wavesAudio from '/waves.mp3'
+import useAudio from './Audio.jsx'
 
 function Sword() {
   const { nodes, materials } = useGLTF('/sword.glb')
@@ -22,16 +24,17 @@ function Map() {
 }
 
 export default function Ships() {
+  const [playingAudio, playWavesAudio] = useAudio(wavesAudio)
   const { nodes, materials } = useGLTF('/ship.glb')
   const cloudMid = useRef(null)
   const cloudTop = useRef(null)
   const cloudBot = useRef(null)
   const splashRef = useRef(null)
   const splashRef2 = useRef(null)
-  // let rotation = 0
-  // let shipR1 = 0
-  // let shipR2 = 0
-  // let increasing = true  
+  
+  useEffect(() => {
+    playWavesAudio()
+  }, [])
 
   useFrame((state, delta) => {
     cloudMid.current.rotation.z += delta * -.1
@@ -42,33 +45,10 @@ export default function Ships() {
     // splashRef.current.rotation.set(-2.71, -0.94, rotation * 10)
     // splashRef2.current.rotation.set(-2.71, -0.94, rotation * 20)
   })
-  // useFrame(() => {
-  //   rotation += .0003
-  //   if (increasing) {
-  //     shipR1 += .0002
-  //     shipR2 += .00005
-  //   } else {
-  //     shipR1 -= .0002
-  //     shipR2 -= .00005
-  //   }
-  //   if (rotation > Math.PI) rotation = -Math.PI
-  //   if (shipR1 > .2 || shipR1 < -.2) {
-  //     increasing = !increasing
-  //   }
-  //   splashRef.current.rotation.set(-2.71, -0.94, rotation * 10)
-  //   splashRef2.current.rotation.set(-2.71, -0.94, rotation * 20)
-  //   shipRef?.current.rotation.set(shipR1, 0, shipR2)
-  //   cloudMid.current.rotation.set(-Math.PI / 2, 0, rotation)
-  //   cloudTop.current.rotation.set(-Math.PI / 2, 0, rotation * -1)
-  //   cloudBot.current.rotation.set(-Math.PI / 2, 0, rotation * -1)
-
-  //   splashRef.current.rotation.set(-2.71, -0.94, rotation * 10)
-  //   splashRef2.current.rotation.set(-2.71, -0.94, rotation * 20)
-  //   shipRef?.current.rotation.set(shipR1, 0, shipR2)
-  // })
 
   return (
     <>
+      
       <SunkenShip nodes={nodes} materials={materials} />
       <Float rotationIntensity={0} speed={2}>
         <Sword />
@@ -77,7 +57,7 @@ export default function Ships() {
           <group>
             <mesh ref={cloudTop} geometry={nodes.Circle_Cloud_0.geometry} material={materials.Cloud} position={[-1.38, 250.33, 0.76]} rotation={[-Math.PI / 2, 0, 0]} scale={130.6} />
             <mesh ref={cloudMid} geometry={nodes.Circle001_Cloud_0.geometry} material={materials.Cloud} position={[-1.38, 223.46, 0.76]} rotation={[-Math.PI / 2, 0, -0.67]} scale={148.79} />
-            <mesh ref={cloudBot} geometry={nodes.Circle002_Cloud_0.geometry} material={materials.Cloud} position={[-1.33, 66.25, 0.69]} rotation={[-Math.PI / 2, 0, 0]} scale={138.18} />
+            <mesh ref={cloudBot} geometry={nodes.Circle002_Cloud_0.geometry} material={materials.Cloud} position={[-1.33, 66.25, 0.69]} rotation={[-Math.PI / 2, 0, 0]} scale={178.18} />
             <Float floatIntensity={2} speed={2}>
               <mesh geometry={nodes.Cylinder007_Bird_0.geometry} material={materials.Bird} position={[-140.24, 152.37, 35.99]} rotation={[-0.79, 0, 0]} scale={4.14} />
             </Float>
@@ -85,7 +65,7 @@ export default function Ships() {
               <mesh geometry={nodes.Cylinder008_Bird_0.geometry} material={materials.Bird} position={[120,150,1]} rotation={[-0.28, 0.15, 0.33]} scale={4.14} />
             </Float>
             <Float floatIntensity={2} speed={2}>
-              <mesh geometry={nodes.Cylinder009_Bird_0.geometry} material={materials.Bird} position={[53, 69.16, 77.94]} rotation={[-0.32, 0.27, -0.34]} scale={3.22} />
+              <mesh geometry={nodes.Cylinder009_Bird_0.geometry} material={materials.Bird} position={[53, 85.16, 77.94]} rotation={[-0.32, 0.27, -0.34]} scale={3.22} />
             </Float>
             <Float floatIntensity={2} speed={2}>
               <mesh geometry={nodes.Cylinder010_Bird_0.geometry} material={materials.Bird} position={[73.15, 115.7, -2.21]} rotation={[0.32, 0.36, 0.07]} scale={3.22} />
@@ -100,6 +80,10 @@ export default function Ships() {
               <mesh geometry={nodes.Cylinder013_Bird_0.geometry} material={materials.Bird} position={[-97, 48.12, -30.01]} rotation={[0.32, 0.36, 0.07]} scale={3.22} />
             </Float>
           </group>
+          <mesh rotation={[-Math.PI /2,0,0]} position={[0,46, -7]}>
+            <meshLambertMaterial color={new THREE.Color(0x975807)} />
+            <planeGeometry args={[50, 50]} />
+          </mesh>
           <group rotation={[0,0,0]}>
             <group position={[0.37, 25.52, -8.21]} rotation={[-Math.PI / 2, 0, 0]} scale={67.17}>
               <mesh geometry={nodes.BezierCircle_Boat_0.geometry} material={materials.Boat} isShip />
@@ -143,8 +127,8 @@ export default function Ships() {
 function SunkenShip({nodes, materials}) {
   return (
     <>
-      <Text position={[-2.5,9.8,40]} title="Welcome Hackers" rotation={[.5,-.7,0]} scale={.42} />
-      <Cloud position={[0,4,35]} args={[3, 2]} depth={.7} opacity={.6} speed={.2} />
+      {/* <Text position={[-2.5,9.8,40]} title="Welcome Hackers" rotation={[.5,-.7,0]} scale={.42} /> */}
+      <Cloud position={[0,3.5,35]} args={[3, 2]} depth={.7} opacity={.6} speed={.2} />
       {/* <Cloud position={[0,2,30]} args={[3, 2]} /> */}
       {/* <Cloud position={[0,3,30]} args={[3, 2]} /> */}
       <group dispose={null} position={[0,-9,28]} scale={.10} rotation={[Math.PI/5, Math.PI/4, 0]}>

@@ -4,8 +4,8 @@ import ReactDOM from 'react-dom/client'
 // import extension from "@theatre/r3f/dist/extension"
 import App from './App.jsx'
 import Loading from './Loading.jsx'
-import Overlay from './Overlay.jsx'
 import { Stats } from "@react-three/drei"
+import { Canvas } from '@react-three/fiber'
 
 // studio.extend(extension)
 // studio.initialize()
@@ -13,8 +13,9 @@ import { Stats } from "@react-three/drei"
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Suspense fallback={<div style={{height: '100vh', backgroundColor: '#171717'}}></div>}>
-      <App />
-      <Overlay />
+      <Canvas style={{height: '100vh', overflow: 'hidden'}} camera={{position: [-5,2,5], fov: 175}}>
+        <App />
+      </Canvas>
     </Suspense>
     <Loading />
     <Stats />
