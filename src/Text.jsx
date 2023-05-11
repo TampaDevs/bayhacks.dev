@@ -4,6 +4,7 @@ import ThreeMeshUI from 'three-mesh-ui'
 import { extend, useFrame } from '@react-three/fiber'
 import * as THREE from "three"
 import {safari, mobile} from './App.jsx'
+import { useStore } from './main.jsx'
 import { editable as e } from "@theatre/r3f"
 
 extend(ThreeMeshUI)
@@ -170,32 +171,41 @@ function Text4() {
 }
 
 function Text3() {
+  const texture = useTexture('/video-thumb.jpg')
   useFrame(() => ThreeMeshUI.update())
+  const setShowVideo = useStore(state => state.setShowVideo)
+
   return (
-    <group position={[5.14, 3.96,0.54]} rotation={[-1.56, -0.40, -1.57]} scale={.7}>
-      <block 
-      position={[0,0,0]}
-      rotation={[0,0,0]}
-      args={[{
-        fontFamily: '/font-roboto.json',
-        fontTexture: '/font-text.png',
-        borderRadius: [.1, .1, .1, .1],
-        width: 1.8,
-        height: 1.8,
-        fontSize: .2,
-        fontColor: new THREE.Color('white'),
-        backgroundColor: new THREE.Color('black'),
-        justifyContent: 'center',
-      }]}>
-        <Text3D font="/font.json" size={.13} height={.01} position={[-.7,.7,0]} rotation={[0,0,0]}>
-          20XX Hackathon
-          <meshLambertMaterial color={new THREE.Color(0xff9465)} />
-        </Text3D>
-        <Text3D font="/font.json" size={.07} height={.01} position={[-.8,.5,0]}>
-          {texty}
-          <meshLambertMaterial color={new THREE.Color('white')} />
-        </Text3D>
-      </block>
+    <group onClick={() => setShowVideo(true)}>
+      <mesh position={[4.269,4.213,0.6746]} rotation={[-1.566, -0.4, -1.579]} scale={[0.2268,0.1458, 1]} onClick={() => setShowVideo(true)}>
+        <meshBasicMaterial map={texture} toneMapped={false} />
+        <planeGeometry args={[5, 5]} />
+      </mesh>
+      <e.group theatreKey="three" position={[4.35, 4.22,0.68]} rotation={[-1.56, -0.40, -1.57]} scale={.7}>
+        <block 
+        position={[0,0,0]}
+        rotation={[0,0,0]}
+        args={[{
+          fontFamily: '/font-roboto.json',
+          fontTexture: '/font-text.png',
+          borderRadius: [.1, .1, .1, .1],
+          width: 1.8,
+          height: 1.8,
+          fontSize: .2,
+          fontColor: new THREE.Color('white'),
+          backgroundColor: new THREE.Color('black'),
+          justifyContent: 'center',
+        }]}>
+          <Text3D font="/font.json" size={.13} height={.01} position={[-.7,.7,0]} rotation={[0,0,0]}>
+            2022 Hackathon
+            <meshLambertMaterial color={new THREE.Color(0xff9465)} />
+          </Text3D>
+          {/* <Text3D font="/font.json" size={.07} height={.01} position={[-.8,.5,0]}>
+            {texty}
+            <meshLambertMaterial color={new THREE.Color('white')} />
+          </Text3D> */}
+        </block>
+      </e.group>
     </group>
   )
 }
@@ -204,7 +214,7 @@ function Text2() {
   useFrame(() => ThreeMeshUI.update())
 
   return (
-    <e.group theatreKey="two">
+    <group>
       <block 
       position={[-0.1,12.161,0.26]}
       rotation={[0,0,0]}
@@ -236,11 +246,11 @@ function Text2() {
           offset: .001,
           backgroundOpacity: 0,
         }]}>
-          <mesh position={[0,0,0]} scale={.5}>
-            <meshBasicMaterial map={texture} toneMapped={false} />
-            <planeGeometry args={[5, 5]} />
-          </mesh>
-        </block> */}
+        <mesh position={[0,0,0]} scale={.5}>
+        <meshBasicMaterial map={texture} toneMapped={false} />
+        <planeGeometry args={[5, 5]} />
+        </mesh>
+      </block> */}
         
         {/* <block args={[{
           width: 5,
@@ -253,8 +263,8 @@ function Text2() {
           backgroundColor: new THREE.Color('black'),
           // borderRadius: [.3, .3, .3, .3],
         }]}>
-          <text content={textRaw} />
-        </block> */}
+        <text content={textRaw} />
+      </block> */}
         {/* <inlineBlock args={[{
           height: 5,
           width: 5,
@@ -276,8 +286,8 @@ function Text2() {
             {/* <Text3D font="/font.json" size={.1} height={.01}>
               {textRaw}
               <meshLambertMaterial color="#13042d" />
-            </Text3D>
-          </e.group> */}
+              </Text3D>
+            </e.group> */}
 
         {/* </block> */}
         {/* <block args={[{
@@ -288,10 +298,10 @@ function Text2() {
           textAlign: 'left',
           backgroundOpacity: 1,
         }]}>
-          <text content={textRaw} />
-        </block> */}
+        <text content={textRaw} />
+      </block> */}
       </block>
-    </e.group>
+    </group>
   )
 }
 function Text1() {

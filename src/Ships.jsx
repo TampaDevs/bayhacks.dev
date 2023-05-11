@@ -4,11 +4,13 @@ import { useFrame } from '@react-three/fiber'
 import * as THREE from "three"
 import wavesAudio from '/waves.mp3'
 import useAudio from './Audio.jsx'
+import { editable as e } from "@theatre/r3f"
+import { useStore } from './main.jsx'
 
 function Sword() {
   const { nodes, materials } = useGLTF('/sword.glb')
   return (
-    <group dispose={null} scale={.01} position={[3.9, 4.15, 0.5]} rotation={[2, -.5, -.5]}>
+    <group dispose={null} scale={.01} position={[3.49, 4.13, 0.039]} rotation={[2, -.5, -.5]}>
       <mesh geometry={nodes['Box002_Material_#26_0'].geometry} material={materials.Material_26} position={[1.21, 0, -0.7]} rotation={[-Math.PI / 2, 0, 0]} />
     </group>
   )
@@ -23,7 +25,9 @@ function Map() {
   )
 }
 
+let turnedOnce = false
 export default function Ships() {
+  const showVideo = useStore(state => state.showVideo)
   const [playingAudio, playWavesAudio] = useAudio(wavesAudio)
   const { nodes, materials } = useGLTF('/ship.glb')
   const cloudMid = useRef(null)
@@ -34,9 +38,16 @@ export default function Ships() {
 
   useEffect(() => {
     window.addEventListener("click", () => {
-      if (!playingAudio) playWavesAudio()
+      if (!playingAudio && !turnedOnce) {
+        playWavesAudio()
+        turnedOnce = true
+      }
     })
   }, [])
+
+  useEffect(() => {
+    if (turnedOnce) playWavesAudio()
+  }, [showVideo])
 
   useFrame((state, delta) => {
     cloudMid.current.rotation.z += delta * -.1

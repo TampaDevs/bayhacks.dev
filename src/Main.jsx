@@ -3,9 +3,19 @@ import ReactDOM from 'react-dom/client'
 // import studio from "@theatre/studio"
 // import extension from "@theatre/r3f/dist/extension"
 import App from './App.jsx'
+import Modal from './Modal.jsx'
 import Loading from './Loading.jsx'
 import { Stats } from "@react-three/drei"
 import { Canvas } from '@react-three/fiber'
+import { create } from 'zustand'
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+export const useStore = create(set => ({
+  showVideo: false,
+  setShowVideo: () => set(state => ({ showVideo: !state.showVideo })),
+  showInfo: false,
+  setShowInfo: () => set(state => ({ showInfo: !state.showInfo })),
+}))
 
 // studio.extend(extension)
 // studio.initialize()
@@ -17,6 +27,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <App />
       </Canvas>
     </Suspense>
+    <Modal />
     <Loading />
     <Stats />
   </React.StrictMode>

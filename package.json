@@ -15,11 +15,14 @@
     "@theatre/core": "^0.6.0",
     "@theatre/r3f": "^0.6.0",
     "@theatre/studio": "^0.6.0",
+    "bootstrap": "^5.2.3",
     "lottie-react": "^2.4.0",
     "react": "^18.2.0",
+    "react-bootstrap": "^2.7.4",
     "react-dom": "^18.2.0",
     "three": "^0.152.2",
-    "three-mesh-ui": "^6.5.4"
+    "three-mesh-ui": "^6.5.4",
+    "zustand": "^4.3.8"
   },
   "devDependencies": {
     "vite": "^4.3.5"
