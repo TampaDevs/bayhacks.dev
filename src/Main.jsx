@@ -8,7 +8,7 @@ import Loading from './Loading.jsx'
 import { Stats } from "@react-three/drei"
 import { Canvas } from '@react-three/fiber'
 import { create } from 'zustand'
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 
 export const useStore = create(set => ({
   showVideo: false,
