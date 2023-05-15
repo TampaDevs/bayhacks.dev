@@ -5,7 +5,7 @@ import * as THREE from "three"
 import wavesAudio from '/waves.mp3'
 import useAudio from './Audio.jsx'
 // import { editable as e } from "@theatre/r3f"
-import { useStore } from './main.jsx'
+import { useStore } from './Modal.jsx'
 
 function Sword() {
   const { nodes, materials } = useGLTF('/sword.glb')

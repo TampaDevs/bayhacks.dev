@@ -4,7 +4,7 @@ import ThreeMeshUI from 'three-mesh-ui'
 import { extend, useFrame } from '@react-three/fiber'
 import * as THREE from "three"
 import {safari, mobile} from './App.jsx'
-import { useStore } from './main.jsx'
+import { useStore } from './Modal.jsx'
 
 extend(ThreeMeshUI)
 

@@ -1,9 +1,26 @@
 import React from 'react'
 import Modal from "react-bootstrap/Modal"
 import Button from "react-bootstrap/Button"
-import { useStore } from './main.jsx'
+// import { useStore } from './main.jsx'
+import { create } from 'zustand'
+
+export const useStore = create(set => ({
+  showTrad: false,
+  setShowTrad: () => set(state => ({ showTrad: !state.showTrad })),
+  showVideo: false,
+  setShowVideo: () => set(state => ({ showVideo: !state.showVideo })),
+  showM1: false,
+  setShowM1: () => set(state => ({ showM1: !state.showM1 })),
+  showM2: false,
+  setShowM2: () => set(state => ({ showM2: !state.showM2 })),
+  showM3: false,
+  setShowM3: () => set(state => ({ showM3: !state.showM3 })),
+  playing: false,
+  setPlaying: () => set(state => ({ playing: !state.playing })),
+}))
 
 export default function AllModals() {
+
   return (
     <>
       <VideoModal />

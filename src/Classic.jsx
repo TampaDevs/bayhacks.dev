@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import style from './style/classic.module.css'
 import Popover from 'react-bootstrap/Popover'
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
-import { useStore } from './main.jsx'
+import { useStore } from './Modal.jsx'
 import Container from 'react-bootstrap/Container'
 
 const tradPopover = (
