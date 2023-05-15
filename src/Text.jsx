@@ -132,7 +132,7 @@ function Text2() {
           <meshLambertMaterial color={new THREE.Color(0x8effa1)} />
         </Text3D>
       </Float>
-      <Text3D font="/font.json" size={.055} height={.01} position={[-.8,.5,0]}>
+      <Text3D font="/font.json" size={.057} height={.01} position={[-.8,.5,0]}>
         {
         `${insertNewLine("Join our hackathon to collaborate with like-minded student and professionals, develop a project from scratch, and showcase your skills to industry experts.", 42)}`
          + `\n\n${insertNewLine("With cutting-edge tools and technologies, mentorship, prizes, and just 48 hours to create the most innovative solution, it's an adrenaline-pumping experience that could kickstart your career or startup.", 42)}`
@@ -182,7 +182,7 @@ function Text3() {
 function Text4() {
   useFrame(() => ThreeMeshUI.update())
   return (
-    <group position={[6.776, 2.84,-15.876]} rotation={[0.11, -0.08, 0.03]} scale={.8}>
+    <group position={[6.776, 2.84,-15.876]} rotation={[0.11, -0.08, 0.03]} scale={.7}>
       <block 
       position={[0,0,0]}
       rotation={[0,0,0]}
@@ -201,7 +201,7 @@ function Text4() {
           F.A.Q.
           <meshLambertMaterial color={new THREE.Color(0x8fb7ff)} />
         </Text3D>
-        <Text3D font="/font.json" size={.045} height={.01} position={[-.8,.6,0]}>
+        <Text3D font="/font.json" size={.05} height={.01} position={[-.8,.6,0]}>
           {`WHO: ${insertNewLine('Participants: Students, programmers, developers, and tech enthusiasts.', 40)}\n\nWHAT: ${insertNewLine('A hackathon is a competition where teams collaborate to develop a software, hardware, or other technology-based solution over a weekend', 40)}\n\nWHY: ${insertNewLine('The purpose of a hackathon is to encourage creativity, innovation, and problem-solving skills. Hackathons provide participants with an opportunity to network, gain valuable technical experience, and potentially even launch their own startup.', 40)}`}
           <meshLambertMaterial color={new THREE.Color('white')} />
         </Text3D>
