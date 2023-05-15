@@ -113,13 +113,13 @@ function Modal3() {
 
   const content = (
     <>
-      <h3>Prizes</h3>
+      <h4>Prizes</h4>
       <ul>
         <li>1st place $500</li>
         <li>2nd place $300</li>
         <li>3rd place $200</li>
       </ul>
-      <h3>Judge Criteria</h3>
+      <h4>Judge Criteria</h4>
       <p>This is a score based event. In order to achieve the highest score you will need to meet certain criteria. The list of criteria for which attendants will be judged on can be found below. The judges will be looking for whoever can fit the theme and additional criteria which will be revealed when the event starts</p>
       <ul>
         <li>
@@ -135,7 +135,7 @@ function Modal3() {
   return (
     <CustomModal 
       content={content}
-      title="Prizes"
+      title="Event Details"
       show={showM3}
       onHide={() => setShowM3(false)}
     />

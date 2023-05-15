@@ -169,8 +169,8 @@ function Text3() {
           backgroundColor: new THREE.Color('black'),
           justifyContent: 'center',
         }]}>
-          <Text3D font="/font.json" size={.13} height={.01} position={[-.7,.7,0]} rotation={[0,0,0]}>
-            2022 Hackathon
+          <Text3D font="/font.json" size={.10} height={.01} position={[-.7,.7,0]} rotation={[0,0,0]}>
+            Last Year's Hackathon
             <meshLambertMaterial color={new THREE.Color(0xff9465)} />
           </Text3D>
         </block>
@@ -228,11 +228,11 @@ function Text5() {
         justifyContent: 'center',
       }]}>
         <Text3D font="/font.json" size={.1} height={.01} position={[-.7,.7,0]} rotation={[0,0,0]}>
-          Event Details
+          Schedule
           <meshLambertMaterial color={new THREE.Color(0x8fb7ff)} />
         </Text3D>
-        <Text3D font="/font.json" size={.07} height={.01} position={[-.8,.5,0]}>
-          {`When: \n\nTBA: Early - Mid October, 2023\n\nIt will be over a full weekend,\non Saturday and Sunday`}
+        <Text3D font="/font.json" size={.074} height={.01} position={[-.8,.5,0]}>
+          {`The event date is currently TBA\n\nEarly - Mid October, 2023\n\nThe event will be over a full weekend,\nFriday, Saturday and Sunday`}
           <meshLambertMaterial color={new THREE.Color('white')} />
         </Text3D>
       </block>
