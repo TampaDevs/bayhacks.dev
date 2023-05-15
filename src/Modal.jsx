@@ -56,7 +56,7 @@ function VideoModal() {
   return (
     <CustomModal 
       content={<iframe width="100%" height="400px" src="https://www.youtube-nocookie.com/embed/fEXdLheZW6k" title="Hackathon" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>}
-      title="2022 Hackathon"
+      title="Last Year's Hackathon"
       show={showVideo}
       onHide={() => setShowVideo(false)}
     />
@@ -69,7 +69,7 @@ function Modal1() {
 
   const content = (
     <div style={{fontSize: '1.4em'}}>
-      <p>You can RSVP for the event by going <a href="#">here</a></p>
+      <p>You can RSVP for the event by going <a href="http://meetup.com/tampadevs" target="_blank">here</a></p>
       {/* <ul>
         <li>
           
@@ -115,9 +115,9 @@ function Modal3() {
     <>
       <h3>Prizes</h3>
       <ul>
-        <li>1st place $3</li>
-        <li>2nd place $2</li>
-        <li>3rd place $1</li>
+        <li>1st place $500</li>
+        <li>2nd place $300</li>
+        <li>3rd place $200</li>
       </ul>
       <h3>Judge Criteria</h3>
       <p>This is a score based event. In order to achieve the highest score you will need to meet certain criteria. The list of criteria for which attendants will be judged on can be found below. The judges will be looking for whoever can fit the theme and additional criteria which will be revealed when the event starts</p>

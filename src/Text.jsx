@@ -132,8 +132,11 @@ function Text2() {
           <meshLambertMaterial color={new THREE.Color(0x8effa1)} />
         </Text3D>
       </Float>
-      <Text3D font="/font.json" size={.058} height={.01} position={[-.8,.5,0]}>
-        {insertNewLine("Join our hackathon to collaborate with like-minded student and professionals, develop a project from scratch, and showcase your skills to industry experts. With cutting-edge tools and technologies, mentorship, prizes, and just 48 hours to create the most innovative solution, it's an adrenaline-pumping experience that could kickstart your career or startup. Don't miss out on this exciting opportunity!", 42)}
+      <Text3D font="/font.json" size={.055} height={.01} position={[-.8,.5,0]}>
+        {
+        `${insertNewLine("Join our hackathon to collaborate with like-minded student and professionals, develop a project from scratch, and showcase your skills to industry experts.", 42)}`
+         + `\n\n${insertNewLine("With cutting-edge tools and technologies, mentorship, prizes, and just 48 hours to create the most innovative solution, it's an adrenaline-pumping experience that could kickstart your career or startup.", 42)}`
+          + `\n\n${insertNewLine("Don't miss out on this exciting opportunity!", 42)}`}
         <meshLambertMaterial color={new THREE.Color('white')} />
       </Text3D>
     </block>
@@ -199,19 +202,13 @@ function Text4() {
           <meshLambertMaterial color={new THREE.Color(0x8fb7ff)} />
         </Text3D>
         <Text3D font="/font.json" size={.045} height={.01} position={[-.8,.6,0]}>
-          {`WHO: ${insertNewLine('Participants: Students, programmers, developers, and tech enthusiasts.', 40)}\nWHAT: ${insertNewLine('A hackathon is a competition where teams collaborate to develop a software, hardware, or other technology-based solution within a limited time-frame (usually 24-48 hours).', 40)}\nWHY: ${insertNewLine('The purpose of a hackathon is to encourage creativity, innovation, and problem-solving skills. Hackathons provide participants with an opportunity to network, gain valuable technical experience, and potentially even launch their own startup. Companies and organizations sponsor hackathons to identify talent, promote their brand, and solve complex problems through community collaboration.', 40)}`}
-          {/* {"WHAT: build a project in 48 hours\n\nWHEN: Early October or \nMid October 2023\n\nWHERE: TBA Tampa,FL\n\nWHO: open to all!\nstudents, new to coding, IT professionals\n\nWHY: Learn new skills,\nmake new connections"} */}
+          {`WHO: ${insertNewLine('Participants: Students, programmers, developers, and tech enthusiasts.', 40)}\n\nWHAT: ${insertNewLine('A hackathon is a competition where teams collaborate to develop a software, hardware, or other technology-based solution over a weekend', 40)}\n\nWHY: ${insertNewLine('The purpose of a hackathon is to encourage creativity, innovation, and problem-solving skills. Hackathons provide participants with an opportunity to network, gain valuable technical experience, and potentially even launch their own startup.', 40)}`}
           <meshLambertMaterial color={new THREE.Color('white')} />
         </Text3D>
       </block>
     </group>
   )
 }
-
-
-// WHO:\nParticipants: Students, programmers, developers, and tech enthusiasts.\n\n
-// WHAT:\nA hackathon is a competition where teams collaborate to develop a software, hardware, or other technology-based solution within a limited time-frame (usually 24-48 hours).\n\n
-// WHY:\nThe purpose of a hackathon is to encourage creativity, innovation, and problem-solving skills. Hackathons provide participants with an opportunity to network, gain valuable technical experience, and potentially even launch their own startup. Companies and organizations sponsor hackathons to identify talent, promote their brand, and solve complex problems through community collaboration.
 
 function Text5() {
   useFrame(() => ThreeMeshUI.update())
@@ -235,7 +232,7 @@ function Text5() {
           <meshLambertMaterial color={new THREE.Color(0x8fb7ff)} />
         </Text3D>
         <Text3D font="/font.json" size={.07} height={.01} position={[-.8,.5,0]}>
-          {texty}
+          {`When: \n\nTBA: Early - Mid October, 2023\n\nIt will be over a full weekend,\non Saturday and Sunday`}
           <meshLambertMaterial color={new THREE.Color('white')} />
         </Text3D>
       </block>
