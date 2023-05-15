@@ -5,23 +5,16 @@ import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import Modal from './Modal.jsx'
 import Loading from './Loading.jsx'
-import Classic from './Classic.jsx'
+import { Stats } from "@react-three/drei"
 import { Canvas } from '@react-three/fiber'
 import { create } from 'zustand'
+// import 'bootstrap/dist/css/bootstrap.min.css';
 
 export const useStore = create(set => ({
-  showTrad: false,
-  setShowTrad: () => set(state => ({ showTrad: !state.showTrad })),
   showVideo: false,
   setShowVideo: () => set(state => ({ showVideo: !state.showVideo })),
-  showM1: false,
-  setShowM1: () => set(state => ({ showM1: !state.showM1 })),
-  showM2: false,
-  setShowM2: () => set(state => ({ showM2: !state.showM2 })),
-  showM3: false,
-  setShowM3: () => set(state => ({ showM3: !state.showM3 })),
-  playing: false,
-  setPlaying: () => set(state => ({ playing: !state.playing })),
+  showInfo: false,
+  setShowInfo: () => set(state => ({ showInfo: !state.showInfo })),
 }))
 
 // studio.extend(extension)
@@ -35,7 +28,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       </Canvas>
     </Suspense>
     <Modal />
-    <Classic />
     <Loading />
+    <Stats />
   </React.StrictMode>
 )
