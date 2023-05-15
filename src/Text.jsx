@@ -36,9 +36,9 @@ export default function AllText() {
       <Text3 />
       <Text4 />
       <Text5 />
-      <Button position={[-0.9, 9.59, 40.26]} rotation={[-3.04,0.51, -3.09]} scale={1} text="Judge Criteria" onClick={() => setShowM1(true)} />
-      <Button position={[-0.788, 9.207, 39.975]} rotation={[-3.04,0.509, -3.095]} scale={.9} text="Event Location" onClick={() => setShowM2(true)} />
-      {/* <Button position={[-0.698, 8.94, 39.77]} rotation={[-3.04,0.509, -3.095]} scale={.8} text="Other" onClick={() => setShowM3(true)} /> */}
+      <Button position={[-0.9, 9.59, 40.26]} rotation={[-3.04,0.51, -3.09]} scale={1} text="RSVP" onClick={() => setShowM1(true)} />
+      <Button position={[-0.788, 9.207, 39.975]} rotation={[-3.04,0.509, -3.095]} scale={.9} text="Location" onClick={() => setShowM2(true)} />
+      <Button position={[-0.698, 8.94, 39.77]} rotation={[-3.04,0.509, -3.095]} scale={.8} text="Prizes" onClick={() => setShowM3(true)} />
     </>
   )
 }
@@ -113,10 +113,12 @@ function Text2() {
     <block 
     position={[-0.1,12.161,0.26]}
     rotation={[0,0,0]}
+    scale={1}
+    // scale={1}
     args={[{
       fontFamily: '/font-roboto.json',
       fontTexture: '/font-text.png',
-      borderRadius: [.1, .1, .1, .1],
+      borderRadius: .2,
       width: 1.8,
       height: 1.8,
       fontSize: .2,
@@ -125,13 +127,13 @@ function Text2() {
       justifyContent: 'center',
     }]}>
       <Float floatIntensity={.5} speed={3} rotationIntensity={.1}>
-        <Text3D font="/font.json" size={.13} height={.05} position={[-.7,.7,0]} rotation={[0,0,0]}>
-          Welcome Hackers
+        <Text3D font="/font.json" size={.08} height={.05} position={[-.7,.7,0]} rotation={[0,0,0]}>
+          BayHacks Hackathon 2023
           <meshLambertMaterial color={new THREE.Color(0x8effa1)} />
         </Text3D>
       </Float>
-      <Text3D font="/font.json" size={.07} height={.01} position={[-.8,.5,0]}>
-        {texty}
+      <Text3D font="/font.json" size={.058} height={.01} position={[-.8,.5,0]}>
+        {insertNewLine("Join our hackathon to collaborate with like-minded student and professionals, develop a project from scratch, and showcase your skills to industry experts. With cutting-edge tools and technologies, mentorship, prizes, and just 48 hours to create the most innovative solution, it's an adrenaline-pumping experience that could kickstart your career or startup. Don't miss out on this exciting opportunity!")}
         <meshLambertMaterial color={new THREE.Color('white')} />
       </Text3D>
     </block>
@@ -193,11 +195,11 @@ function Text4() {
         justifyContent: 'center',
       }]}>
         <Text3D font="/font.json" size={.1} height={.01} position={[-.7,.7,0]} rotation={[0,0,0]}>
-          What are Hackathons?
+          F.A.Q.
           <meshLambertMaterial color={new THREE.Color(0x8fb7ff)} />
         </Text3D>
-        <Text3D font="/font.json" size={.07} height={.01} position={[-.8,.5,0]}>
-          {texty}
+        <Text3D font="/font.json" size={.058} height={.01} position={[-.8,.5,0]}>
+          {"WHAT: build a project in 48 hours\n\nWHEN: Early October or \nMid October 2023\n\nWHERE: TBA Tampa,FL\n\nWHO: open to all!\nstudents, new to coding, IT professionals\n\nWHY: Learn new skills,\nmake new connections"}
           <meshLambertMaterial color={new THREE.Color('white')} />
         </Text3D>
       </block>

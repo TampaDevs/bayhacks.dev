@@ -69,19 +69,19 @@ function Modal1() {
 
   const content = (
     <div style={{fontSize: '1.4em'}}>
-      <p>This is a score based event. In order to achieve the highest score you will need to meet certain criteria. The list of criteria for which attendants will be judged on can be found below.</p>
-      <ul>
+      <p>You can RSVP for the event by going <a href="#">here</a></p>
+      {/* <ul>
         <li>
-          <a href="#">Link</a>
+          
         </li>
-      </ul>
+      </ul> */}
     </div>
   )
 
   return (
     <CustomModal 
       content={content}
-      title="Judge Criteria"
+      title="RSVP"
       show={showM1}
       onHide={() => setShowM1(false)}
     />
@@ -93,7 +93,7 @@ function Modal2() {
 
   const content = (
     <>
-      <p style={{fontSize: '1.4em'}}>The event will be held at Armature Works</p>
+      <p style={{fontSize: '1.4em'}}>The event will be held at TBD</p>
       {/* <iframe width="100%" height="470" style={{border: '0px'}} loading="lazy" allowFullScreen src="https://www.google.com/maps/embed/v1/view?zoom=17&center=27.9612,-82.4637&key=AIzaSyArof4ztwgHl5UfJOyR5efSxCWoCrjOn_Q"></iframe> */}
     </>
   )
@@ -101,7 +101,7 @@ function Modal2() {
   return (
     <CustomModal 
       content={content}
-      title="Event Location"
+      title="Location"
       show={showM2}
       onHide={() => setShowM2(false)}
     />
@@ -111,10 +111,31 @@ function Modal3() {
   const showM3 = useStore(state => state.showM3)
   const setShowM3 = useStore(state => state.setShowM3)
 
+  const content = (
+    <>
+      <h3>Prizes</h3>
+      <ul>
+        <li>1st place $3</li>
+        <li>2nd place $2</li>
+        <li>3rd place $1</li>
+      </ul>
+      <h3>Judge Criteria</h3>
+      <p>This is a score based event. In order to achieve the highest score you will need to meet certain criteria. The list of criteria for which attendants will be judged on can be found below. The judges will be looking for whoever can fit the theme and additional criteria which will be revealed when the event starts</p>
+      <ul>
+        <li>
+          <a href="#">Sponsor Link 1</a>
+        </li>
+        <li>
+          <a href="#">Sponsor Link 2</a>
+        </li>
+      </ul>
+    </>
+  )
+
   return (
     <CustomModal 
-      content={<p>Some content 3</p>}
-      title="Other"
+      content={content}
+      title="Prizes"
       show={showM3}
       onHide={() => setShowM3(false)}
     />
