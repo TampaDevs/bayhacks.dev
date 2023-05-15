@@ -8,14 +8,14 @@ import { useStore } from './Modal.jsx'
 
 extend(ThreeMeshUI)
 
-const texty = insertNewLine("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.")
+const texty = insertNewLine("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.", 35)
 
-function insertNewLine(str) {
+function insertNewLine(str, char) {
   let result = ''
   let currentLine = ''
   let words = str.split(' ')
   for (let i = 0; i < words.length; i++) {
-    if (currentLine.length + words[i].length > 35) {
+    if (currentLine.length + words[i].length > char) {
       result += currentLine.trim() + '\n'
       currentLine = ''
     }
@@ -133,7 +133,7 @@ function Text2() {
         </Text3D>
       </Float>
       <Text3D font="/font.json" size={.058} height={.01} position={[-.8,.5,0]}>
-        {insertNewLine("Join our hackathon to collaborate with like-minded student and professionals, develop a project from scratch, and showcase your skills to industry experts. With cutting-edge tools and technologies, mentorship, prizes, and just 48 hours to create the most innovative solution, it's an adrenaline-pumping experience that could kickstart your career or startup. Don't miss out on this exciting opportunity!")}
+        {insertNewLine("Join our hackathon to collaborate with like-minded student and professionals, develop a project from scratch, and showcase your skills to industry experts. With cutting-edge tools and technologies, mentorship, prizes, and just 48 hours to create the most innovative solution, it's an adrenaline-pumping experience that could kickstart your career or startup. Don't miss out on this exciting opportunity!", 42)}
         <meshLambertMaterial color={new THREE.Color('white')} />
       </Text3D>
     </block>
@@ -179,7 +179,7 @@ function Text3() {
 function Text4() {
   useFrame(() => ThreeMeshUI.update())
   return (
-    <group position={[6.776, 2.84,-15.876]} rotation={[0.11, -0.08, 0.03]} scale={.7}>
+    <group position={[6.776, 2.84,-15.876]} rotation={[0.11, -0.08, 0.03]} scale={.8}>
       <block 
       position={[0,0,0]}
       rotation={[0,0,0]}
@@ -194,18 +194,24 @@ function Text4() {
         backgroundColor: new THREE.Color('black'),
         justifyContent: 'center',
       }]}>
-        <Text3D font="/font.json" size={.1} height={.01} position={[-.7,.7,0]} rotation={[0,0,0]}>
+        <Text3D font="/font.json" size={.09} height={.01} position={[-.7,.7,0]} rotation={[0,0,0]}>
           F.A.Q.
           <meshLambertMaterial color={new THREE.Color(0x8fb7ff)} />
         </Text3D>
-        <Text3D font="/font.json" size={.058} height={.01} position={[-.8,.5,0]}>
-          {"WHAT: build a project in 48 hours\n\nWHEN: Early October or \nMid October 2023\n\nWHERE: TBA Tampa,FL\n\nWHO: open to all!\nstudents, new to coding, IT professionals\n\nWHY: Learn new skills,\nmake new connections"}
+        <Text3D font="/font.json" size={.045} height={.01} position={[-.8,.6,0]}>
+          {`WHO: ${insertNewLine('Participants: Students, programmers, developers, and tech enthusiasts.', 40)}\nWHAT: ${insertNewLine('A hackathon is a competition where teams collaborate to develop a software, hardware, or other technology-based solution within a limited time-frame (usually 24-48 hours).', 40)}\nWHY: ${insertNewLine('The purpose of a hackathon is to encourage creativity, innovation, and problem-solving skills. Hackathons provide participants with an opportunity to network, gain valuable technical experience, and potentially even launch their own startup. Companies and organizations sponsor hackathons to identify talent, promote their brand, and solve complex problems through community collaboration.', 40)}`}
+          {/* {"WHAT: build a project in 48 hours\n\nWHEN: Early October or \nMid October 2023\n\nWHERE: TBA Tampa,FL\n\nWHO: open to all!\nstudents, new to coding, IT professionals\n\nWHY: Learn new skills,\nmake new connections"} */}
           <meshLambertMaterial color={new THREE.Color('white')} />
         </Text3D>
       </block>
     </group>
   )
 }
+
+
+// WHO:\nParticipants: Students, programmers, developers, and tech enthusiasts.\n\n
+// WHAT:\nA hackathon is a competition where teams collaborate to develop a software, hardware, or other technology-based solution within a limited time-frame (usually 24-48 hours).\n\n
+// WHY:\nThe purpose of a hackathon is to encourage creativity, innovation, and problem-solving skills. Hackathons provide participants with an opportunity to network, gain valuable technical experience, and potentially even launch their own startup. Companies and organizations sponsor hackathons to identify talent, promote their brand, and solve complex problems through community collaboration.
 
 function Text5() {
   useFrame(() => ThreeMeshUI.update())
