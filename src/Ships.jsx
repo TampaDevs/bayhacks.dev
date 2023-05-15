@@ -1,10 +1,10 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { Cloud, Float, useGLTF } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
 import * as THREE from "three"
 import wavesAudio from '/waves.mp3'
 import useAudio from './Audio.jsx'
-import { editable as e } from "@theatre/r3f"
+// import { editable as e } from "@theatre/r3f"
 import { useStore } from './main.jsx'
 
 function Sword() {
@@ -28,6 +28,8 @@ function Map() {
 let turnedOnce = false
 export default function Ships() {
   const showVideo = useStore(state => state.showVideo)
+  const setPlaying = useStore(state => state.setPlaying)
+  const playing = useStore(state => state.playing)
   const [playingAudio, playWavesAudio] = useAudio(wavesAudio)
   const { nodes, materials } = useGLTF('/ship.glb')
   const cloudMid = useRef(null)
@@ -39,6 +41,7 @@ export default function Ships() {
   useEffect(() => {
     window.addEventListener("click", () => {
       if (!playingAudio && !turnedOnce) {
+        setPlaying(true)
         playWavesAudio()
         turnedOnce = true
       }
@@ -46,7 +49,23 @@ export default function Ships() {
   }, [])
 
   useEffect(() => {
-    if (turnedOnce) playWavesAudio()
+    if (playing !== playingAudio) {
+      if (!playing && playingAudio && !showVideo) {
+        playWavesAudio()
+      }
+      if (playing && !playingAudio && !showVideo) { // unmute
+        playWavesAudio()
+      }
+      if (!playing && playingAudio && showVideo) { // open
+        playWavesAudio()
+      }
+    }
+  }, [playing, playingAudio])
+
+  useEffect(() => {
+    if (turnedOnce) {
+      setPlaying(!playing)
+    }
   }, [showVideo])
 
   useFrame((state, delta) => {
