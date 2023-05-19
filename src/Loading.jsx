@@ -1,6 +1,6 @@
 import React from 'react'
 import { useProgress } from "@react-three/drei"
-import loadingIcon from '/loading.jpg'
+import loadingIcon from '/assets/loading.jpg'
 
 const defaultDataInterpolation = (p) => `Loading ${p.toFixed(2)}%`
 

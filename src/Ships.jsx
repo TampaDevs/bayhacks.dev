@@ -2,13 +2,13 @@ import React, { useEffect, useRef, useState } from 'react'
 import { Cloud, Float, useGLTF } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
 import * as THREE from "three"
-import wavesAudio from '/waves.mp3'
+import wavesAudio from '/assets/waves.mp3'
 import useAudio from './Audio.jsx'
 // import { editable as e } from "@theatre/r3f"
 import { useStore } from './Modal.jsx'
 
 function Sword() {
-  const { nodes, materials } = useGLTF('/sword.glb')
+  const { nodes, materials } = useGLTF('/assets/sword.glb')
   return (
     <group dispose={null} scale={.01} position={[3.49, 4.13, 0.039]} rotation={[2, -.5, -.5]}>
       <mesh geometry={nodes['Box002_Material_#26_0'].geometry} material={materials.Material_26} position={[1.21, 0, -0.7]} rotation={[-Math.PI / 2, 0, 0]} />
@@ -17,7 +17,7 @@ function Sword() {
 }
 
 function Map() {
-  const { nodes, materials } = useGLTF('/map.glb')
+  const { nodes, materials } = useGLTF('/assets/map.glb')
   return (
     <group rotation={[-Math.PI/2, 0, -Math.PI/2]} dispose={null} position={[3.17, 3.85, 0.3]} scale={1}>
       <mesh geometry={nodes.Object_4.geometry} material={materials.Material} rotation={[Math.PI / 2, 0, 0]} />
@@ -31,7 +31,7 @@ export default function Ships() {
   const setPlaying = useStore(state => state.setPlaying)
   const playing = useStore(state => state.playing)
   const [playingAudio, playWavesAudio] = useAudio(wavesAudio)
-  const { nodes, materials } = useGLTF('/ship.glb')
+  const { nodes, materials } = useGLTF('/assets/ship.glb')
   const cloudMid = useRef(null)
   const cloudTop = useRef(null)
   const cloudBot = useRef(null)

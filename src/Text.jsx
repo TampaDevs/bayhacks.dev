@@ -61,7 +61,7 @@ function Button({scale, rotation, position, text, onClick}) {
         height: down?.24: .2,
         backgroundColor: hovered ? new THREE.Color(0x2e2e2e) : new THREE.Color(0x000000),
       }]}>
-        <Text3D font="/font.json" size={.1} height={.01} position={[-.433,-.04,0]} onClick={onClick}>
+        <Text3D font="/assets/font-3d.json" size={.1} height={.01} position={[-.433,-.04,0]} onClick={onClick}>
           {text}
           <meshLambertMaterial color={hovered ? new THREE.Color(0xc4d3ff) : new THREE.Color(0xffffff)} />
         </Text3D>
@@ -71,15 +71,15 @@ function Button({scale, rotation, position, text, onClick}) {
 }
 
 function Text1() {
-  const texture = useVideoTexture(mobile ? '/scroll.mp4' : '/scroll-desktop.mp4')
+  const texture = useVideoTexture(mobile ? '/assets/scroll.mp4' : '/assets/scroll-desktop.mp4')
   useFrame(() => ThreeMeshUI.update())
   return (
     <block 
       position={[-6,1.5,4]}
       rotation={[0,-.75,0]}
     args={[{
-      fontFamily: '/font-roboto.json',
-      fontTexture: '/font-text.png',
+      fontFamily: '/assets/font.json',
+      fontTexture: '/assets/font.png',
       borderRadius: [.8, .8, .8, .8],
       backgroundOpacity: safari ? 0 : 1,
       width: 3,
@@ -89,7 +89,7 @@ function Text1() {
       backgroundColor: mobile ? new THREE.Color( 'rgb(92,92,92)'  ) : new THREE.Color(0x000000),
       justifyContent: 'center',
     }]}>
-      <Text3D font="/font.json" size={.3} height={.08} position={[-1.2,1,0]}>
+      <Text3D font="/assets/font-3d.json" size={.3} height={.08} position={[-1.2,1,0]}>
         Try Scrolling
         <meshLambertMaterial color={new THREE.Color('white')} />
       </Text3D>
@@ -116,8 +116,8 @@ function Text2() {
     scale={1}
     // scale={1}
     args={[{
-      fontFamily: '/font-roboto.json',
-      fontTexture: '/font-text.png',
+      fontFamily: '/assets/font.json',
+      fontTexture: '/assets/font.png',
       borderRadius: .2,
       width: 1.8,
       height: 1.8,
@@ -127,12 +127,12 @@ function Text2() {
       justifyContent: 'center',
     }]}>
       <Float floatIntensity={.5} speed={3} rotationIntensity={.1}>
-        <Text3D font="/font.json" size={.08} height={.05} position={[-.7,.7,0]} rotation={[0,0,0]}>
+        <Text3D font="/assets/font-3d.json" size={.08} height={.05} position={[-.7,.7,0]} rotation={[0,0,0]}>
           BayHacks Hackathon 2023
           <meshLambertMaterial color={new THREE.Color(0x8effa1)} />
         </Text3D>
       </Float>
-      <Text3D font="/font.json" size={.057} height={.01} position={[-.8,.5,0]}>
+      <Text3D font="/assets/font-3d.json" size={.057} height={.01} position={[-.8,.5,0]}>
         {
         `${insertNewLine("Join our hackathon to collaborate with like-minded student and professionals, develop a project from scratch, and showcase your skills to industry experts.", 42)}`
          + `\n\n${insertNewLine("With cutting-edge tools and technologies, mentorship, prizes, and just 48 hours to create the most innovative solution, it's an adrenaline-pumping experience that could kickstart your career or startup.", 42)}`
@@ -144,7 +144,7 @@ function Text2() {
 }
 
 function Text3() {
-  const texture = useTexture('/video-thumb.jpg')
+  const texture = useTexture('/assets/video-thumb.jpg')
   useFrame(() => ThreeMeshUI.update())
   const setShowVideo = useStore(state => state.setShowVideo)
 
@@ -159,8 +159,8 @@ function Text3() {
         position={[0,0,0]}
         rotation={[0,0,0]}
         args={[{
-          fontFamily: '/font-roboto.json',
-          fontTexture: '/font-text.png',
+          fontFamily: '/assets/font.json',
+          fontTexture: '/assets/font.png',
           borderRadius: [.1, .1, .1, .1],
           width: 1.8,
           height: 1.8,
@@ -169,7 +169,7 @@ function Text3() {
           backgroundColor: new THREE.Color('black'),
           justifyContent: 'center',
         }]}>
-          <Text3D font="/font.json" size={.10} height={.01} position={[-.7,.7,0]} rotation={[0,0,0]}>
+          <Text3D font="/assets/font-3d.json" size={.10} height={.01} position={[-.7,.7,0]} rotation={[0,0,0]}>
             Last Year's Hackathon
             <meshLambertMaterial color={new THREE.Color(0xff9465)} />
           </Text3D>
@@ -187,8 +187,8 @@ function Text4() {
       position={[0,0,0]}
       rotation={[0,0,0]}
       args={[{
-        fontFamily: '/font-roboto.json',
-        fontTexture: '/font-text.png',
+        fontFamily: '/assets/font.json',
+        fontTexture: '/assets/font.png',
         borderRadius: [.1, .1, .1, .1],
         width: 1.8,
         height: 1.8,
@@ -197,11 +197,11 @@ function Text4() {
         backgroundColor: new THREE.Color('black'),
         justifyContent: 'center',
       }]}>
-        <Text3D font="/font.json" size={.09} height={.01} position={[-.7,.7,0]} rotation={[0,0,0]}>
+        <Text3D font="/assets/font-3d.json" size={.09} height={.01} position={[-.7,.7,0]} rotation={[0,0,0]}>
           F.A.Q.
           <meshLambertMaterial color={new THREE.Color(0x8fb7ff)} />
         </Text3D>
-        <Text3D font="/font.json" size={.05} height={.01} position={[-.8,.6,0]}>
+        <Text3D font="/assets/font-3d.json" size={.05} height={.01} position={[-.8,.6,0]}>
           {`WHO: ${insertNewLine('Participants: Students, programmers, developers, and tech enthusiasts.', 40)}\n\nWHAT: ${insertNewLine('A hackathon is a competition where teams collaborate to develop a software, hardware, or other technology-based solution over a weekend', 40)}\n\nWHY: ${insertNewLine('The purpose of a hackathon is to encourage creativity, innovation, and problem-solving skills. Hackathons provide participants with an opportunity to network, gain valuable technical experience, and potentially even launch their own startup.', 40)}`}
           <meshLambertMaterial color={new THREE.Color('white')} />
         </Text3D>
@@ -217,8 +217,8 @@ function Text5() {
       <block
       args={[{
         contentDirection: 'row-reverse',
-        fontFamily: '/font-roboto.json',
-        fontTexture: '/font-text.png',
+        fontFamily: '/assets/font.json',
+        fontTexture: '/assets/font.png',
         borderRadius: 0.1,
         width: 1.8,
         height: 1.8,
@@ -227,11 +227,11 @@ function Text5() {
         backgroundColor: new THREE.Color('black'),
         justifyContent: 'center',
       }]}>
-        <Text3D font="/font.json" size={.1} height={.01} position={[-.7,.7,0]} rotation={[0,0,0]}>
+        <Text3D font="/assets/font-3d.json" size={.1} height={.01} position={[-.7,.7,0]} rotation={[0,0,0]}>
           Schedule
           <meshLambertMaterial color={new THREE.Color(0x8fb7ff)} />
         </Text3D>
-        <Text3D font="/font.json" size={.074} height={.01} position={[-.8,.5,0]}>
+        <Text3D font="/assets/font-3d.json" size={.074} height={.01} position={[-.8,.5,0]}>
           {`The event date is currently TBA\n\nEarly - Mid October, 2023\n\nThe event will be over a full weekend,\nFriday, Saturday and Sunday`}
           <meshLambertMaterial color={new THREE.Color('white')} />
         </Text3D>
