@@ -1,11 +1,10 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { Cloud, Float, useGLTF } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
 import * as THREE from "three"
 import wavesAudio from '/assets/waves.mp3'
 import useAudio from './Audio.jsx'
-// import { editable as e } from "@theatre/r3f"
-import { useStore } from './Modal.jsx'
+import { useStore } from './Main.jsx'
 
 function Sword() {
   const { nodes, materials } = useGLTF('/assets/sword.glb')
@@ -30,6 +29,7 @@ export default function Ships() {
   const showVideo = useStore(state => state.showVideo)
   const setPlaying = useStore(state => state.setPlaying)
   const playing = useStore(state => state.playing)
+  const muted = useStore(state => state.muted)
   const [playingAudio, playWavesAudio] = useAudio(wavesAudio)
   const { nodes, materials } = useGLTF('/assets/ship.glb')
   const cloudMid = useRef(null)
@@ -49,24 +49,36 @@ export default function Ships() {
   }, [])
 
   useEffect(() => {
-    if (playing !== playingAudio) {
-      if (!playing && playingAudio && !showVideo) {
-        playWavesAudio()
-      }
-      if (playing && !playingAudio && !showVideo) { // unmute
-        playWavesAudio()
-      }
-      if (!playing && playingAudio && showVideo) { // open
-        playWavesAudio()
-      }
-    }
-  }, [playing, playingAudio])
+    console.log('playing', playing, '| playingAudio', playingAudio, '| muted', muted)
+    // if (playing !== playingAudio) {
+    //   if (!playing && playingAudio && !showVideo) {
+    //     playWavesAudio()
+    //   }
+    //   if (playing && !playingAudio && !showVideo) { // unmute
+    //     playWavesAudio()
+    //   }
+    //   if (!playing && playingAudio && showVideo) { // open
+    //     playWavesAudio()
+    //   }
+    // }
+  }, [playing, playingAudio, muted])
 
   useEffect(() => {
-    if (turnedOnce) {
+    if (turnedOnce && !muted) {
       setPlaying(!playing)
     }
-  }, [showVideo])
+  }, [showVideo, muted])
+
+  useEffect(() => {
+    if (playingAudio && muted) {
+      setPlaying(false)
+    } else {
+      if (turnedOnce) {
+        setPlaying(true)
+        playWavesAudio()
+      }
+    }
+  }, [muted])
 
   useFrame((state, delta) => {
     cloudMid.current.rotation.z += delta * -.1

@@ -1,14 +1,14 @@
 import React, { useState } from 'react'
-import { Float, Text3D, useTexture, Center, useVideoTexture } from "@react-three/drei"
+import { Float, Text3D, useTexture, useVideoTexture, Text, Plane, Html, RoundedBox, Center } from "@react-three/drei"
 import ThreeMeshUI from 'three-mesh-ui'
 import { extend, useFrame } from '@react-three/fiber'
 import * as THREE from "three"
-import {safari, mobile} from './App.jsx'
-import { useStore } from './Modal.jsx'
+import { safari } from './App.jsx'
+import { useStore } from './Main.jsx'
+import { box1Title, box2Body, box2Title, box3Title, box4Body, box4Title } from './text/index.js'
 
 extend(ThreeMeshUI)
 
-const texty = insertNewLine("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.", 35)
 
 function insertNewLine(str, char) {
   let result = ''
@@ -24,17 +24,17 @@ function insertNewLine(str, char) {
   return result + currentLine.trim()
 }
 
-export default function AllText() {
+export default function AllText({ mobile }) {
   const setShowM1 = useStore(state => state.setShowM1)
   const setShowM2 = useStore(state => state.setShowM2)
   const setShowM3 = useStore(state => state.setShowM3)
 
   return (
     <>
-      <Text1 />
-      <Text2 />
-      <Text3 />
-      <Text4 />
+      <Box1 mobile={mobile} />
+      <Box2 />
+      <Box3 />
+      <Box4 />
       <Text5 />
       <Button position={[-0.9, 9.59, 40.26]} rotation={[-3.04,0.51, -3.09]} scale={1} text="RSVP" onClick={() => setShowM1(true)} />
       <Button position={[-0.788, 9.207, 39.975]} rotation={[-3.04,0.509, -3.095]} scale={.9} text="Location" onClick={() => setShowM2(true)} />
@@ -70,82 +70,54 @@ function Button({scale, rotation, position, text, onClick}) {
   )
 }
 
-function Text1() {
+function Box1({ mobile }) {
   const texture = useVideoTexture(mobile ? '/assets/scroll.mp4' : '/assets/scroll-desktop.mp4')
-  useFrame(() => ThreeMeshUI.update())
   return (
-    <block 
-      position={[-6,1.5,4]}
-      rotation={[0,-.75,0]}
-    args={[{
-      fontFamily: '/assets/font.json',
-      fontTexture: '/assets/font.png',
-      borderRadius: [.8, .8, .8, .8],
-      backgroundOpacity: safari ? 0 : 1,
-      width: 3,
-      height: 3,
-      fontSize: .3,
-      fontColor: new THREE.Color('white'),
-      backgroundColor: mobile ? new THREE.Color( 'rgb(92,92,92)'  ) : new THREE.Color(0x000000),
-      justifyContent: 'center',
-    }]}>
-      <Text3D font="/assets/font-3d.json" size={.3} height={.08} position={[-1.2,1,0]}>
-        Try Scrolling
-        <meshLambertMaterial color={new THREE.Color('white')} />
-      </Text3D>
-      <block args={[{
-        offset: .001,
-        backgroundOpacity: 0,
-      }]}>
-        <mesh position={[0,0,0]} scale={.5}>
+    <group scale={.1} position={[-6,1.5,4]} rotation={[0,-.75,0]}>
+      <RoundedBox args={[20, 20, .0001]} radius={1}>
+        <meshBasicMaterial
+          color={mobile ? new THREE.Color( 'rgb(45,45,45)'  ) : new THREE.Color(0x000000)}
+        />
+      </RoundedBox>
+      <Center position={[0,9,1]}>
+        <Text3D font="/assets/font-3d.json" size={1.8} height={.08} position={[-1.2,1,0]} >
+          {box1Title}
+        </Text3D>
+      </Center>
+      <Center position={[0,0,1]}>
+        <mesh position={[0,0,0]} scale={3.5}>
           <meshBasicMaterial map={texture} toneMapped={false} />
           <planeGeometry args={[5, 5]} />
         </mesh>
-      </block>
-    </block>
+      </Center>
+    </group>
   )
 }
 
-function Text2() {
-  useFrame(() => ThreeMeshUI.update())
-
+function Box2() {
   return (
-    <block 
-    position={[-0.1,12.161,0.26]}
-    rotation={[0,0,0]}
-    scale={1}
-    // scale={1}
-    args={[{
-      fontFamily: '/assets/font.json',
-      fontTexture: '/assets/font.png',
-      borderRadius: .2,
-      width: 1.8,
-      height: 1.8,
-      fontSize: .2,
-      fontColor: new THREE.Color('white'),
-      backgroundColor: new THREE.Color('black'),
-      justifyContent: 'center',
-    }]}>
-      <Float floatIntensity={.5} speed={3} rotationIntensity={.1}>
-        <Text3D font="/assets/font-3d.json" size={.08} height={.05} position={[-.7,.7,0]} rotation={[0,0,0]}>
-          BayHacks Hackathon 2023
-          <meshLambertMaterial color={new THREE.Color(0x8effa1)} />
-        </Text3D>
+    <group scale={.1} position={[-0.1,13,0.26]}>
+      <RoundedBox args={[20, 20, .0001]} radius={.5}>
+        <meshBasicMaterial color="black" transparent opacity={.9} />
+      </RoundedBox>
+      <Float floatIntensity={2} speed={2} rotationIntensity={.1}>
+        <Center position={[0,9,1]}>
+          <Text3D font="/assets/font-3d.json" height={.1}>
+            {box2Title}
+            <meshBasicMaterial color={new THREE.Color(0x8effa1)} />
+          </Text3D>
+        </Center>
       </Float>
-      <Text3D font="/assets/font-3d.json" size={.057} height={.01} position={[-.8,.5,0]}>
-        {
-        `${insertNewLine("Join our hackathon to collaborate with like-minded student and professionals, develop a project from scratch, and showcase your skills to industry experts.", 42)}`
-         + `\n\n${insertNewLine("With cutting-edge tools and technologies, mentorship, prizes, and just 48 hours to create the most innovative solution, it's an adrenaline-pumping experience that could kickstart your career or startup.", 42)}`
-          + `\n\n${insertNewLine("Don't miss out on this exciting opportunity!", 42)}`}
-        <meshLambertMaterial color={new THREE.Color('white')} />
-      </Text3D>
-    </block>
+      <Text position={[0,0,1]} maxWidth={18}>
+        <meshBasicMaterial />
+        {box2Body}
+      </Text> 
+    </group>
   )
 }
 
-function Text3() {
+function Box3() {
   const texture = useTexture('/assets/video-thumb.jpg')
-  useFrame(() => ThreeMeshUI.update())
   const setShowVideo = useStore(state => state.setShowVideo)
 
   return (
@@ -154,33 +126,42 @@ function Text3() {
         <meshBasicMaterial map={texture} toneMapped={false} />
         <planeGeometry args={[5, 5]} />
       </mesh>
-      <group position={[4.35, 4.22,0.68]} rotation={[-1.56, -0.40, -1.57]} scale={.7}>
-        <block 
-        position={[0,0,0]}
-        rotation={[0,0,0]}
-        args={[{
-          fontFamily: '/assets/font.json',
-          fontTexture: '/assets/font.png',
-          borderRadius: [.1, .1, .1, .1],
-          width: 1.8,
-          height: 1.8,
-          fontSize: .2,
-          fontColor: new THREE.Color('white'),
-          backgroundColor: new THREE.Color('black'),
-          justifyContent: 'center',
-        }]}>
-          <Text3D font="/assets/font-3d.json" size={.10} height={.01} position={[-.7,.7,0]} rotation={[0,0,0]}>
-            Last Year's Hackathon
-            <meshLambertMaterial color={new THREE.Color(0xff9465)} />
+      <group position={[4.35, 4.22,0.68]} rotation={[-1.56, -0.40, -1.57]} scale={.1}>
+        <RoundedBox args={[12.4, 12.4, .000001]} radius={.4}>
+          <meshBasicMaterial color="black" transparent opacity={.9} />
+        </RoundedBox>
+        <Center position={[0,5,.1]}>
+          <Text3D font="/assets/font-3d.json" height={.01} size={.8}>
+            {box3Title}
+            <meshBasicMaterial color={new THREE.Color(0xff9465)} />
           </Text3D>
-        </block>
+        </Center>
       </group>
     </group>
   )
 }
 
-function Text4() {
-  useFrame(() => ThreeMeshUI.update())
+function Box4() {
+  return (
+    <group scale={.1} position={[6.776, 2.84,-15.876]} rotation={[0.11, -0.08, 0.03]} >
+      <RoundedBox args={[20, 20, .0001]} radius={.5}>
+        <meshBasicMaterial color="black" transparent opacity={.9} />
+      </RoundedBox>
+      <Float floatIntensity={2} speed={2} rotationIntensity={.1}>
+        <Center position={[0,8,1]}>
+          <Text3D font="/assets/font-3d.json" height={.1}>
+            {box4Title}
+            <meshBasicMaterial color={new THREE.Color(0x8effa1)} />
+          </Text3D>
+        </Center>
+      </Float>
+      <Text position={[0,0,1]} maxWidth={18} fontSize={.8}>
+        <meshBasicMaterial />
+        {box4Body}
+      </Text> 
+    </group>
+  )
+
   return (
     <group position={[6.776, 2.84,-15.876]} rotation={[0.11, -0.08, 0.03]} scale={.7}>
       <block 

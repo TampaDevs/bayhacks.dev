@@ -265,9 +265,7 @@ extend({ SkyMaterial });
 
 export default function Sky() {
   const ref = useRef();
-
   const { gl } = useThree();
-
   const GPU = useDetectGPU({ glContext: gl.getContext() });
 
   useEffect(() => {

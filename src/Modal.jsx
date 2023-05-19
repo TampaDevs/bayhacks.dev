@@ -1,26 +1,9 @@
 import React from 'react'
-import Modal from "react-bootstrap/Modal"
+import M from "react-bootstrap/Modal"
 import Button from "react-bootstrap/Button"
-// import { useStore } from './main.jsx'
-import { create } from 'zustand'
+import { useStore } from './Main.jsx'
 
-export const useStore = create(set => ({
-  showTrad: false,
-  setShowTrad: () => set(state => ({ showTrad: !state.showTrad })),
-  showVideo: false,
-  setShowVideo: () => set(state => ({ showVideo: !state.showVideo })),
-  showM1: false,
-  setShowM1: () => set(state => ({ showM1: !state.showM1 })),
-  showM2: false,
-  setShowM2: () => set(state => ({ showM2: !state.showM2 })),
-  showM3: false,
-  setShowM3: () => set(state => ({ showM3: !state.showM3 })),
-  playing: false,
-  setPlaying: () => set(state => ({ playing: !state.playing })),
-}))
-
-export default function AllModals() {
-
+export default function Modals() {
   return (
     <>
       <VideoModal />
@@ -31,21 +14,23 @@ export default function AllModals() {
   )
 }
 
-function CustomModal({onHide, show, title, content}) {
+function Modal({ onHide, show, title, content }) {
+
+  // TODO: find out a way to make modal wider
   return (
-    <Modal show={show} onHide={onHide} dialogClassName="modal-90w">
-      <Modal.Header closeButton>
-        <Modal.Title>{title}</Modal.Title>
-      </Modal.Header>
-      <Modal.Body className="w-100">
+    <M show={show} onHide={onHide} dialogClassName="modal-90w">
+      <M.Header closeButton>
+        <M.Title>{title}</M.Title>
+      </M.Header>
+      <M.Body className="w-100">
         {content}
-      </Modal.Body>
-      <Modal.Footer>
+      </M.Body>
+      <M.Footer>
         <Button variant="secondary" onClick={onHide}>
           Close
         </Button>
-      </Modal.Footer>
-    </Modal>
+      </M.Footer>
+    </M>
   )
 }
 
@@ -54,7 +39,7 @@ function VideoModal() {
   const setShowVideo = useStore(state => state.setShowVideo)
 
   return (
-    <CustomModal 
+    <Modal 
       content={<iframe width="100%" height="400px" src="https://www.youtube-nocookie.com/embed/fEXdLheZW6k" title="Hackathon" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>}
       title="Last Year's Hackathon"
       show={showVideo}
@@ -79,7 +64,7 @@ function Modal1() {
   )
 
   return (
-    <CustomModal 
+    <Modal 
       content={content}
       title="RSVP"
       show={showM1}
@@ -99,7 +84,7 @@ function Modal2() {
   )
 
   return (
-    <CustomModal 
+    <Modal 
       content={content}
       title="Location"
       show={showM2}
@@ -133,7 +118,7 @@ function Modal3() {
   )
 
   return (
-    <CustomModal 
+    <Modal 
       content={content}
       title="Event Details"
       show={showM3}

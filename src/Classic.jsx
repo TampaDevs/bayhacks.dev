@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import style from './style/classic.module.css'
 import Popover from 'react-bootstrap/Popover'
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
-import { useStore } from './Modal.jsx'
+import { useStore } from './Main.jsx'
 import Container from 'react-bootstrap/Container'
 
 const tradPopover = (
@@ -28,6 +28,8 @@ export default function Classic() {
   const [playedOnce, setPlayedOnce] = useState()
   const playing = useStore(state => state.playing)
   const setPlaying = useStore(state => state.setPlaying)
+  const muted = useStore(state => state.muted)
+  const setMuted = useStore(state => state.setMuted)
 
   function toggle() {
     setShowTrad(prev => !prev)
@@ -46,13 +48,13 @@ export default function Classic() {
       {(!showTrad && playedOnce) ?
         playing
           ?
-            <div className={style.mute} onClick={() => setPlaying(!playing)}>
+            <div className={style.mute} onClick={() => setMuted(!muted)}>
               <svg xmlns="http://www.w3.org/2000/svg" style={{margin: 'auto'}} width="2em" height="2em" fill="white" viewBox="0 0 16 16">
                 <path d="M6.717 3.55A.5.5 0 0 1 7 4v8a.5.5 0 0 1-.812.39L3.825 10.5H1.5A.5.5 0 0 1 1 10V6a.5.5 0 0 1 .5-.5h2.325l2.363-1.89a.5.5 0 0 1 .529-.06zm7.137 2.096a.5.5 0 0 1 0 .708L12.207 8l1.647 1.646a.5.5 0 0 1-.708.708L11.5 8.707l-1.646 1.647a.5.5 0 0 1-.708-.708L10.793 8 9.146 6.354a.5.5 0 1 1 .708-.708L11.5 7.293l1.646-1.647a.5.5 0 0 1 .708 0z"/>
               </svg>
             </div>
           :
-            <div className={style.mute} onClick={() => setPlaying(!playing)}>
+            <div className={style.mute} onClick={() => setMuted(!muted)}>
               <svg xmlns="http://www.w3.org/2000/svg" style={{margin: 'auto'}} width="2em" height="2em" fill="white" viewBox="0 0 16 16">
                 <path d="M11.536 14.01A8.473 8.473 0 0 0 14.026 8a8.473 8.473 0 0 0-2.49-6.01l-.708.707A7.476 7.476 0 0 1 13.025 8c0 2.071-.84 3.946-2.197 5.303l.708.707z"/>
                 <path d="M10.121 12.596A6.48 6.48 0 0 0 12.025 8a6.48 6.48 0 0 0-1.904-4.596l-.707.707A5.483 5.483 0 0 1 11.025 8a5.483 5.483 0 0 1-1.61 3.89l.706.706z"/>
