@@ -5,7 +5,6 @@ export const box2Body = `Join our hackathon to collaborate with like-minded stud
 With cutting-edge tools and technologies, mentorship, prizes, and just 48 hours to create the most innovative solution, it's an adrenaline-pumping experience that could kickstart your career or startup.
 
 Don't miss out on this exciting opportunity!`
-// export const box2Body = "Join our hackathon to collaborate with like-minded student and professionals, develop a project from scratch, and showcase your skills to industry experts. \n\nWith cutting-edge tools and technologies, mentorship, prizes, and just 48 hours to create the most innovative solution, it's an adrenaline-pumping experience that could kickstart your career or startup. \n\nDon't miss out on this exciting opportunity!"
 export const box3Title="Last Year's Hackathon"
 export const box4Title="F.A.Q."
 export const box4Body = `WHO:
