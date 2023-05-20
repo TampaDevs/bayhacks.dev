@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react'
 import style from './style/classic.module.css'
 import Popover from 'react-bootstrap/Popover'
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
-import { useStore } from './Modal.jsx'
+import { useStore } from './Main.jsx'
 import Container from 'react-bootstrap/Container'
+import { box2Body, box2Title, box3Title, box4Body, box4Title, box5Title, box5Body, btn1, btn2, btn3, modal1, modal2, modal3 } from './text/index.jsx'
 
 const tradPopover = (
   <Popover id="popover-basic">
@@ -24,35 +25,43 @@ const otherPopover = (
 )
 
 export default function Classic() {
-  const [showTrad, setShowTrad] = useState()
   const [playedOnce, setPlayedOnce] = useState()
-  const playing = useStore(state => state.playing)
-  const setPlaying = useStore(state => state.setPlaying)
+  const showScreen = useStore(state => state.showScreen)
+  const setShowScreen = useStore(state => state.setShowScreen)
+  const playingAudio = useStore(state => state.playingAudio)
+  const setPlayingAudio = useStore(state => state.setPlayingAudio)
+  // const muted = useStore(state => state.muted)
+  // const setMuted = useStore(state => state.setMuted)
 
   function toggle() {
-    setShowTrad(prev => !prev)
-    setPlaying(!playing)
+    if (showScreen === '3d') {
+      setShowScreen('2d')
+      setPlayingAudio(false)
+    } else if (showScreen === '2d') {
+      setShowScreen('3d')
+      setPlayingAudio(true)
+    }
   }
 
   useEffect(() => {
-    if (!playedOnce && playing) {
+    if (!playedOnce && playingAudio) {
       setPlayedOnce(true)
     }
-  }, [playing])
+  }, [playingAudio])
   
   return (
     <>
-      {showTrad && <Website />}
-      {(!showTrad && playedOnce) ?
-        playing
+      {showScreen === '2d' && <Website />}
+      {(showScreen === '3d' && playedOnce) ?
+        playingAudio
           ?
-            <div className={style.mute} onClick={() => setPlaying(!playing)}>
+            <div className={style.mute} onClick={() => setPlayingAudio(false)}>
               <svg xmlns="http://www.w3.org/2000/svg" style={{margin: 'auto'}} width="2em" height="2em" fill="white" viewBox="0 0 16 16">
                 <path d="M6.717 3.55A.5.5 0 0 1 7 4v8a.5.5 0 0 1-.812.39L3.825 10.5H1.5A.5.5 0 0 1 1 10V6a.5.5 0 0 1 .5-.5h2.325l2.363-1.89a.5.5 0 0 1 .529-.06zm7.137 2.096a.5.5 0 0 1 0 .708L12.207 8l1.647 1.646a.5.5 0 0 1-.708.708L11.5 8.707l-1.646 1.647a.5.5 0 0 1-.708-.708L10.793 8 9.146 6.354a.5.5 0 1 1 .708-.708L11.5 7.293l1.646-1.647a.5.5 0 0 1 .708 0z"/>
               </svg>
             </div>
           :
-            <div className={style.mute} onClick={() => setPlaying(!playing)}>
+            <div className={style.mute} onClick={() => setPlayingAudio(true)}>
               <svg xmlns="http://www.w3.org/2000/svg" style={{margin: 'auto'}} width="2em" height="2em" fill="white" viewBox="0 0 16 16">
                 <path d="M11.536 14.01A8.473 8.473 0 0 0 14.026 8a8.473 8.473 0 0 0-2.49-6.01l-.708.707A7.476 7.476 0 0 1 13.025 8c0 2.071-.84 3.946-2.197 5.303l.708.707z"/>
                 <path d="M10.121 12.596A6.48 6.48 0 0 0 12.025 8a6.48 6.48 0 0 0-1.904-4.596l-.707.707A5.483 5.483 0 0 1 11.025 8a5.483 5.483 0 0 1-1.61 3.89l.706.706z"/>
@@ -61,9 +70,9 @@ export default function Classic() {
             </div>
         :null
       }
-      <OverlayTrigger placement="top" overlay={showTrad ? otherPopover : tradPopover}>
+      <OverlayTrigger placement="top" overlay={showScreen === '2d' ? otherPopover : tradPopover}>
         <div className={style.show} onClick={toggle}>
-          {showTrad
+          {showScreen === '2d'
             ?
               <svg xmlns="http://www.w3.org/2000/svg" style={{margin: 'auto'}} width="2em" height="2em" fill="white" viewBox="0 0 576 512">
                 <path d="M256 16c0-7 4.5-13.2 11.2-15.3s13.9 .4 17.9 6.1l224 320c3.4 4.9 3.8 11.3 1.1 16.6s-8.2 8.6-14.2 8.6H272c-8.8 0-16-7.2-16-16V16zM212.1 96.5c7 1.9 11.9 8.2 11.9 15.5V336c0 8.8-7.2 16-16 16H80c-5.7 0-11-3-13.8-8s-2.9-11-.1-16l128-224c3.6-6.3 11-9.4 18-7.5zM5.7 404.3C2.8 394.1 10.5 384 21.1 384H554.9c10.6 0 18.3 10.1 15.4 20.3l-4 14.3C550.7 473.9 500.4 512 443 512H133C75.6 512 25.3 473.9 9.7 418.7l-4-14.3z"/>
@@ -86,21 +95,22 @@ function Website() {
   return (
     <div className={style.website}>
       <Container className="mt-5">
-        <h1 className="display-1 mt-4">This is bayhacks!</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        <h1 className="display-1 mt-4">Hackathon 2022</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <h1 className="display-4 my-4">{box2Title}</h1>
+        <p>{box2Body}</p>
+        <h1 className="display-4 my-4">{box3Title}</h1>
         <div style={{display: 'flex'}}>
           <iframe style={{marginRight: 'auto', marginLeft: 'auto'}} width="480px" height="320px" src="https://www.youtube-nocookie.com/embed/fEXdLheZW6k" title="Hackathon" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
         </div>
-        <h1 className="display-1 mt-4">What are Hackathons</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        <h1 className="display-1 mt-4">Event Details</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        <ul className="" style={{marginBottom: '200px'}}>
-          <li><a href="#">Judge Criteria</a></li>
-          <li><a href="#">Event Location</a></li>
-        </ul>
+        <h1 className="display-4 my-4">{box4Title}</h1>
+        <p>{box4Body}</p>
+        <h1 className="display-4 my-4">{box5Title}</h1>
+        <p>{box5Body}</p>
+        <h1 className="display-4 my-4">{btn1}</h1>
+        {modal1}
+        <h1 className="display-4 my-4">{btn2}</h1>
+        {modal2}
+        <h1 className="display-4 my-4">{btn3}</h1>
+        {modal3}
       </Container>
     </div>
   )

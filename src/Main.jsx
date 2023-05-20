@@ -1,15 +1,27 @@
 import React, { Suspense } from 'react'
 import ReactDOM from 'react-dom/client'
+import App from './App'
+import Modal from './Modal'
+import Loading from './Loading'
+import Classic from './Classic'
+import { Canvas } from '@react-three/fiber'
+import { create } from 'zustand'
+
+// Theatre can be used to map camera keyframes 😎
 // import studio from "@theatre/studio"
 // import extension from "@theatre/r3f/dist/extension"
-import App from './App.jsx'
-import Modal from './Modal.jsx'
-import Loading from './Loading.jsx'
-import Classic from './Classic.jsx'
-import { Canvas } from '@react-three/fiber'
-
 // studio.extend(extension)
 // studio.initialize()
+
+export const useStore = create(set => ({
+  showScreen: '3d',
+  setShowScreen: id => set(() => ({ showScreen: id })),
+  playingAudio: false,
+  setPlayingAudio: bool => set(() => ({ playingAudio: bool })),
+  // muted: false,
+  // setMuted: bool => set(() => ({ muted: bool })),
+}))
+
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

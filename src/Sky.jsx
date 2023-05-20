@@ -1,5 +1,5 @@
 import { shaderMaterial, useDetectGPU } from '@react-three/drei';
-import { extend, useFrame, useThree } from '@react-three/fiber';
+import { extend, useFrame } from '@react-three/fiber';
 import React, { useEffect, useRef } from 'react';
 import { BackSide } from 'three';
 
@@ -265,10 +265,7 @@ extend({ SkyMaterial });
 
 export default function Sky() {
   const ref = useRef();
-
-  const { gl } = useThree();
-
-  const GPU = useDetectGPU({ glContext: gl.getContext() });
+  const GPU = useDetectGPU();
 
   useEffect(() => {
     switch (GPU.tier) {
