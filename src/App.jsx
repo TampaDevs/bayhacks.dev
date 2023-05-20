@@ -1,5 +1,5 @@
 import React  from "react"
-import { useFrame, useThree } from "@react-three/fiber"
+import { useFrame } from "@react-three/fiber"
 import { ScrollControls, useScroll, Sky, Plane, useDetectGPU } from "@react-three/drei"
 import { SheetProvider, PerspectiveCamera, useCurrentSheet } from "@theatre/r3f"
 import { getProject, val } from "@theatre/core"
@@ -8,13 +8,14 @@ import Water from "./Water"
 import SkyCustom from "./Sky"
 import Text from './Text'
 import state from "./fly.json"
+import wavesAudio from '/assets/waves.mp3'
+import Audio from './Audio.jsx'
 
 export const sheet = getProject("Fly Through", { state }).sheet("Scene")
 export const safari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent)
 
 export default function App() {
-  const { gl } = useThree()
-  const GPUTier = useDetectGPU({ glContext: gl.getContext() })
+  const GPUTier = useDetectGPU()
 
   return (
     <>
@@ -38,17 +39,18 @@ export default function App() {
             </>
         }
       </ScrollControls>
-      <Text mobile={GPUTier.isMobile} />
+      <Text />
+      <Audio file={wavesAudio} />
     </>
   )
 }
 
 function Camera() {
-  const sheet = useCurrentSheet();
+  const sheet = useCurrentSheet()
   const scroll = useScroll()
 
   useFrame(() => {
-    const sequenceLength = val(sheet.sequence.pointer.length);
+    const sequenceLength = val(sheet.sequence.pointer.length)
     sheet.sequence.position = scroll.offset * sequenceLength
   })
 

@@ -1,10 +1,7 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useRef } from 'react'
 import { Cloud, Float, useGLTF } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
 import * as THREE from "three"
-import wavesAudio from '/assets/waves.mp3'
-import useAudio from './Audio.jsx'
-import { useStore } from './Main.jsx'
 
 function Sword() {
   const { nodes, materials } = useGLTF('/assets/sword.glb')
@@ -24,13 +21,7 @@ function Map() {
   )
 }
 
-let turnedOnce = false
-export default function Ships() {
-  const showVideo = useStore(state => state.showVideo)
-  const setPlaying = useStore(state => state.setPlaying)
-  const playing = useStore(state => state.playing)
-  const muted = useStore(state => state.muted)
-  const [playingAudio, playWavesAudio] = useAudio(wavesAudio)
+export default function Ships() {  
   const { nodes, materials } = useGLTF('/assets/ship.glb')
   const cloudMid = useRef(null)
   const cloudTop = useRef(null)
@@ -38,56 +29,10 @@ export default function Ships() {
   const splashRef = useRef(null)
   const splashRef2 = useRef(null)
 
-  useEffect(() => {
-    window.addEventListener("click", () => {
-      if (!playingAudio && !turnedOnce) {
-        setPlaying(true)
-        playWavesAudio()
-        turnedOnce = true
-      }
-    })
-  }, [])
-
-  useEffect(() => {
-    console.log('playing', playing, '| playingAudio', playingAudio, '| muted', muted)
-    // if (playing !== playingAudio) {
-    //   if (!playing && playingAudio && !showVideo) {
-    //     playWavesAudio()
-    //   }
-    //   if (playing && !playingAudio && !showVideo) { // unmute
-    //     playWavesAudio()
-    //   }
-    //   if (!playing && playingAudio && showVideo) { // open
-    //     playWavesAudio()
-    //   }
-    // }
-  }, [playing, playingAudio, muted])
-
-  useEffect(() => {
-    if (turnedOnce && !muted) {
-      setPlaying(!playing)
-    }
-  }, [showVideo, muted])
-
-  useEffect(() => {
-    if (playingAudio && muted) {
-      setPlaying(false)
-    } else {
-      if (turnedOnce) {
-        setPlaying(true)
-        playWavesAudio()
-      }
-    }
-  }, [muted])
-
   useFrame((state, delta) => {
     cloudMid.current.rotation.z += delta * -.1
     cloudTop.current.rotation.z += delta * .1
     cloudBot.current.rotation.z += delta * .1
-    // splashRef.current.rotation.z += delta * .1
-    // splashRef2.current.rotation.z += delta * .2
-    // splashRef.current.rotation.set(-2.71, -0.94, rotation * 10)
-    // splashRef2.current.rotation.set(-2.71, -0.94, rotation * 20)
   })
 
   return (
@@ -171,10 +116,7 @@ export default function Ships() {
 function SunkenShip({nodes, materials}) {
   return (
     <>
-      {/* <Text position={[-2.5,9.8,40]} title="Welcome Hackers" rotation={[.5,-.7,0]} scale={.42} /> */}
       <Cloud position={[0,3.5,35]} args={[3, 2]} depth={.7} opacity={.6} speed={.2} />
-      {/* <Cloud position={[0,2,30]} args={[3, 2]} /> */}
-      {/* <Cloud position={[0,3,30]} args={[3, 2]} /> */}
       <group dispose={null} position={[0,-9,28]} scale={.10} rotation={[Math.PI/5, Math.PI/4, 0]}>
         <group rotation={[0,0,0]}>
           <group position={[0, 73, 0]} rotation={[-Math.PI / 2, 0, 0]} scale={11.39}>
