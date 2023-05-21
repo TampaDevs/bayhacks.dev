@@ -68,3 +68,16 @@ export const modal3 = (
     </ul>
   </>
 )
+
+export const credit = (
+  <div style={{fontSize: '.6em', marginBottom: '16em'}}>
+    <h1 className="text-muted mt-5">Credits</h1>
+    <p className="text-muted">This project was constructed with models generously published for public use. This is a list of all the source material which has made this project possible.</p>
+    <ul className="text-muted mb-5">
+      <li><a href="https://sketchfab.com/3d-models/pirate-viva-34f6cb31cf264b79b8f023f769057fd0" style={{color: 'rgb(158, 150, 137)'}}>Ship Model and CC license</a>. Changes made: the model was simplified and has some minor additions</li>
+      <li><a href="https://sketchfab.com/3d-models/low-poly-pirate-sword-89bb2ffcd83043a29c5886d920497086" style={{color: 'rgb(158, 150, 137)'}}>Sword Model and CC license</a></li>
+      <li><a href="https://sketchfab.com/3d-models/cool-styled-pirate-map-603e993445b54ed8b1474268d77836ba" style={{color: 'rgb(158, 150, 137)'}}>Map Model and CC license</a></li>
+      <li><a href="https://github.com/JMBeresford/lab/blob/main/LICENSE" style={{color: 'rgb(158, 150, 137)'}}>Water and sky shaders with MIT license</a></li>
+    </ul>
+  </div>
+)
