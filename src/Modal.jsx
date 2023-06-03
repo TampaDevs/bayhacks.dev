@@ -19,10 +19,11 @@ function Modal({ title, content, id, pauseWhenOpen }) {
   const showScreen = useStore(state => state.showScreen)
   const setShowScreen = useStore(state => state.setShowScreen)
   const setPlayingAudio = useStore(state => state.setPlayingAudio)
+  const muted = useStore(state => state.muted)
 
   function onHide() {
     setShowScreen('3d')
-    if (pauseWhenOpen) {
+    if (pauseWhenOpen && !muted) {
       setPlayingAudio(true)
     }
   }
