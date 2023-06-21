@@ -6,7 +6,7 @@ import Loading from './Loading'
 import Classic from './Classic'
 import { Canvas } from '@react-three/fiber'
 import { create } from 'zustand'
-
+import './global.css'
 // Theatre can be used to map camera keyframes 😎
 // import studio from "@theatre/studio"
 // import extension from "@theatre/r3f/dist/extension"

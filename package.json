@@ -23,6 +23,6 @@
     "zustand": "^4.3.8"
   },
   "devDependencies": {
-    "vite": "^4.3.5"
+    "vite": "^4.3.9"
   }
 }

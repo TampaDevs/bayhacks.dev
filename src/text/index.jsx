@@ -33,13 +33,9 @@ export const btn2 = "Location"
 export const btn3 = "Prizes"
 
 export const modal1 = (
-  <div style={{fontSize: '1.4em'}}>
-    <p>You can RSVP for the event by going <a href="http://meetup.com/tampadevs" target="_blank">here</a></p>
-    {/* <ul>
-      <li>
-        
-      </li>
-    </ul> */}
+  <div style={{fontSize: '1em'}}>
+    <p>You can RSVP by filling out the form below or following this <a href="https://cdn.forms-content.sg-form.com/00ccf8ee-0d7c-11ee-bf2c-16fb11e76640" target="_blank">link</a></p>
+    <iframe id="rsvp-form" width="100%" height="570px" src="https://cdn.forms-content.sg-form.com/00ccf8ee-0d7c-11ee-bf2c-16fb11e76640"/>
   </div>
 )
 export const modal2 = (
