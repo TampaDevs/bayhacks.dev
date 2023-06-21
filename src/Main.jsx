@@ -18,10 +18,9 @@ export const useStore = create(set => ({
   setShowScreen: id => set(() => ({ showScreen: id })),
   playingAudio: false,
   setPlayingAudio: bool => set(() => ({ playingAudio: bool })),
-  // muted: false,
-  // setMuted: bool => set(() => ({ muted: bool })),
+  muted: false,
+  setMuted: bool => set(() => ({ muted: bool })),
 }))
-
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

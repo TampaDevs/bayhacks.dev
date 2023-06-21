@@ -6,40 +6,22 @@ export default function AudioPlayer({file})  {
   const showScreen = useStore(state => state.showScreen)
   const playingAudio = useStore(state => state.playingAudio)
   const setPlayingAudio = useStore(state => state.setPlayingAudio)
-  // const muted = useStore(state => state.muted)
-  // const setMuted = useStore(state => state.setMuted)
+  const muted = useStore(state => state.muted)
+  const setMuted = useStore(state => state.setMuted)
 
   const [audio] = useState(new Audio(file))
 
-  useEffect(() => {
-    window.addEventListener("click", () => {
-      if (!playingAudio && !turnedOnce) {
-        turnedOnce = true
-        setPlayingAudio(true)
-      }
-    })
-  }, [])
-
-  // useEffect(() => {
-  //   if (turnedOnce && !muted) {
-  //     setPlaying(!playing)
-  //   }
-  // }, [muted])
-
-  // useEffect(() => {
-  //   if (playingAudio && muted) {
-  //     setPlaying(false)
-  //   } else {
-  //     if (turnedOnce) {
-  //       setPlaying(true)
-  //       playWavesAudio()
-  //     }
-  //   }
-  // }, [muted])
-
-
   audio.volume = 0.1
   audio.loop = true
+
+  function handleFirstClick() {
+    if (!playingAudio && !turnedOnce) {
+      turnedOnce = true
+      if (!localStorage.getItem('mute')) {
+        setPlayingAudio(true)
+      }
+    }
+  }
 
   useEffect(() => {
     // normally there is a skip on turning the audio on for box3
@@ -48,8 +30,35 @@ export default function AudioPlayer({file})  {
       return
     }
 
-    playingAudio ? audio.play() : audio.pause()
-  }, [playingAudio, showScreen])
+    if (muted) {
+      audio.pause()
+    } else {
+      playingAudio ? audio.play() : audio.pause()
+    }
+
+  }, [playingAudio, showScreen, muted])
+
+  useEffect(() => {
+    // check if mute has been stored
+    const muteStorage = localStorage.getItem('mute')
+    if (muteStorage) {
+      setMuted(true)
+    }
+  }, [])
+
+  useEffect(() => {
+    if (muted) {
+      localStorage.setItem('mute', true)
+      setPlayingAudio(false)
+    } else {
+      if (turnedOnce) {
+        localStorage.removeItem('mute')
+        setPlayingAudio(true)
+      }
+    }
+    window.addEventListener("click", handleFirstClick)
+    return () => window.removeEventListener("click", handleFirstClick)
+  }, [muted])
 
   return (
     <></>
