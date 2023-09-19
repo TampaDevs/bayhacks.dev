@@ -11,7 +11,7 @@ export const box3Title="Last Year's Hackathon"
 export const box3Body = (
   <iframe width="100%" height="400px" src="https://www.youtube-nocookie.com/embed/fEXdLheZW6k" title="Hackathon" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
 )
-export const box4Title="F.A.Q."
+export const box4Title=""
 export const box4Body = `WHO: Students, programmers, developers, and tech enthusiasts.
 
 BUILD: Set against a tight deadline, each team must take a product from initial concept to MVP. Creative ideas and clever design are the best tools in their arsenals. Are you up for the challenge?
