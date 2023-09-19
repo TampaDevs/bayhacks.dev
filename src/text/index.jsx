@@ -12,16 +12,13 @@ export const box3Body = (
   <iframe width="100%" height="400px" src="https://www.youtube-nocookie.com/embed/fEXdLheZW6k" title="Hackathon" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
 )
 export const box4Title="F.A.Q."
-export const box4Body = `WHO:
-Participants: Students, programmers, developers, and tech enthusiasts.
+export const box4Body = `WHO: Students, programmers, developers, and tech enthusiasts.
 
-Have you ever built a startup in a weekend?
+BUILD: Set against a tight deadline, each team must take a product from initial concept to MVP. Creative ideas and clever design are the best tools in their arsenals. Are you up for the challenge?
 
-BUILD: Each team has two days to take a product from initial concept to MVP. Set against a tight deadline, creative ideas and clever design are the best tools in their arsenals. Are you up for the challenge?
+LEARN: ALL SKILL LEVELS WELCOME, whether your specialty is software development, product design, UI/UX, or you’re just getting started. BayHacks provides competitors great opportunities to learn, share knowledge, and display their unique skill sets.
 
-LEARN: ALL SKILL LEVELS WELCOME, whether your specialty is software development, product design, UI/UX, or you’re just getting started. TADHacks provides competitors with great opportunities to learn, share knowledge, and display their unique skill sets.
-
-NETWORK: Connect with Tampa’s vibrant community of software developers, entrepreneurs, students, and innovators. Meet and compete with some of the best technical talent from around Tampa Bay.
+NETWORK: Connect with Tampa’s vibrant community of software developers, entrepreneurs, students, and innovators. Meet and compete with some of the best talent from around Tampa Bay.
 `
 
 export const box5Title = "Schedule"
@@ -50,14 +47,14 @@ export const modal3 = (
     <ul>
       <li>We'll have cash prizes available for first through third place, as well as scored subcategories.</li>
     </ul>
-    <h4>Judge Criteria</h4>
-    <p>This is a score based event. In order to achieve the highest score you will need to meet certain criteria. The list of criteria for which attendants will be judged on can be found below. The judges will be looking for whoever can fit the theme and additional criteria which will be revealed when the event starts</p>
+    <h4>Thank You To Our Sponsors</h4>
+    <p>We're deeply grateful to our sponsors for their generous support of BayHacks.</p>
     <ul>
       <li>
-        <a href="#">Sponsor Link 1</a>
+        <a href="https://www.faireconomy.com/">Fair Economy</a>
       </li>
       <li>
-        <a href="#">Sponsor Link 2</a>
+        <a href="https://dexian.com/disys/">Dexian | DISYS</a>
       </li>
     </ul>
   </>
