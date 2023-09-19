@@ -1,7 +1,7 @@
 import React from 'react'
 
 export const box1Title="Try Scrolling"
-export const box2Title = "BayHacks Hackathon 2023"
+export const box2Title = "BayHacks Hackathon 2024"
 export const box2Body = `Join our hackathon to collaborate with like-minded student and professionals, develop a project from scratch, and showcase your skills to industry experts.
 
 With cutting-edge tools and technologies, mentorship, prizes, and just 48 hours to create the most innovative solution, it's an adrenaline-pumping experience that could kickstart your career or startup.
@@ -15,17 +15,17 @@ export const box4Title="F.A.Q."
 export const box4Body = `WHO:
 Participants: Students, programmers, developers, and tech enthusiasts.
 
-WHAT: 
-A hackathon is a competition where teams collaborate to develop a software, hardware, or other technology-based solution over a weekend
+Have you ever built a startup in a weekend?
 
-WHY:
-The purpose of a hackathon is to encourage creativity, innovation, and problem-solving skills. Hackathons provide participants with an opportunity to network, gain valuable technical experience, and potentially even launch their own startup.
+BUILD: Each team has two days to take a product from initial concept to MVP. Set against a tight deadline, creative ideas and clever design are the best tools in their arsenals. Are you up for the challenge?
+
+LEARN: ALL SKILL LEVELS WELCOME, whether your specialty is software development, product design, UI/UX, or you’re just getting started. TADHacks provides competitors with great opportunities to learn, share knowledge, and display their unique skill sets.
+
+NETWORK: Connect with Tampa’s vibrant community of software developers, entrepreneurs, students, and innovators. Meet and compete with some of the best technical talent from around Tampa Bay.
 `
 
 export const box5Title = "Schedule"
-export const box5Body = `The event date is currently TBA
-
-Early - Mid October, 2023
+export const box5Body = `The event date is currently TBA. We're tentatively planning for January-February of 2024.
 
 The event will be over a full weekend, Friday, Saturday and Sunday`
 export const btn1 = "RSVP"
@@ -40,7 +40,7 @@ export const modal1 = (
 )
 export const modal2 = (
   <>
-    <p style={{fontSize: '1.4em'}}>The event will be held at TBD</p>
+    <p style={{fontSize: '1.4em'}}>We're examining multiple event venues, and will share more details soon!</p>
     {/* <iframe width="100%" height="470" style={{border: '0px'}} loading="lazy" allowFullScreen src="https://www.google.com/maps/embed/v1/view?zoom=17&center=27.9612,-82.4637&key=${process.env.REACT_ENV_KEY}"></iframe> */}
   </>
 )
@@ -48,9 +48,7 @@ export const modal3 = (
   <>
     <h4>Prizes</h4>
     <ul>
-      <li>1st place $500</li>
-      <li>2nd place $300</li>
-      <li>3rd place $200</li>
+      <li>We'll have cash prizes available for first through third place, as well as scored subcategories.</li>
     </ul>
     <h4>Judge Criteria</h4>
     <p>This is a score based event. In order to achieve the highest score you will need to meet certain criteria. The list of criteria for which attendants will be judged on can be found below. The judges will be looking for whoever can fit the theme and additional criteria which will be revealed when the event starts</p>
