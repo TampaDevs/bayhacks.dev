@@ -22,22 +22,19 @@ NETWORK: Connect with Tampa’s vibrant community of software developers, entrep
 `
 
 export const box5Title = "Schedule"
-export const box5Body = `The event date is currently TBA. We're tentatively planning for January-February of 2024.
-
-The event will be over a full weekend, Friday, Saturday and Sunday`
+export const box5Body = `BayHacks 2024 will be hosted at USF Discovery Hall on February 24th-25th.`
 export const btn1 = "RSVP"
 export const btn2 = "Location"
 export const btn3 = "Prizes"
 
 export const modal1 = (
   <div style={{fontSize: '1em'}}>
-    <p>You can RSVP by filling out the form below or following this <a href="https://cdn.forms-content.sg-form.com/00ccf8ee-0d7c-11ee-bf2c-16fb11e76640" target="_blank">link</a></p>
-    <iframe id="rsvp-form" width="100%" height="600px" src="https://cdn.forms-content.sg-form.com/00ccf8ee-0d7c-11ee-bf2c-16fb11e76640"/>
+    <p>250 tickets for BayHacks 2024 are now available for purchase! For just $10, you can be a part of this dynamic event that includes unforgettable opportunities for collaboration, innovation, and the chance to win cash prizes. Get yours today at <a href="https://www.eventbrite.com/e/bayhacks-2024-hackathon-tickets-778750562897?aff=oddtdtcreator" target="_blank">Eventbrite</a></p>
   </div>
 )
 export const modal2 = (
   <>
-    <p style={{fontSize: '1.4em'}}>We're examining multiple event venues, and will share more details soon!</p>
+    <p style={{fontSize: '1.4em'}}>BayHacks 2024 will be hosted at <a href="https://www.usf.edu/research-innovation/rf/research-park/research-park-facilities.aspx">USF Discovery Hall</a> on February 24th-25th.</p>
     {/* <iframe width="100%" height="470" style={{border: '0px'}} loading="lazy" allowFullScreen src="https://www.google.com/maps/embed/v1/view?zoom=17&center=27.9612,-82.4637&key=${process.env.REACT_ENV_KEY}"></iframe> */}
   </>
 )
@@ -55,6 +52,9 @@ export const modal3 = (
       </li>
       <li>
         <a href="https://dexian.com/disys/">Dexian | DISYS</a>
+      </li>
+      <li>
+        <a href="https://www.computercoach.com/">Computer Coach</a>
       </li>
     </ul>
   </>
