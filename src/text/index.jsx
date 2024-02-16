@@ -23,9 +23,9 @@ NETWORK: Connect with Tampa’s vibrant community of software developers, entrep
 
 export const box5Title = "Schedule"
 export const box5Body = `BayHacks 2024 will be hosted at USF Discovery Hall on February 24th-25th.`
-export const btn1 = "RSVP"
+export const btn1 = "Tickets"
 export const btn2 = "Location"
-export const btn3 = "Prizes"
+export const btn3 = "Sponsors"
 
 export const modal1 = (
   <div style={{fontSize: '1em'}}>
@@ -40,21 +40,38 @@ export const modal2 = (
 )
 export const modal3 = (
   <>
-    <h4>Prizes</h4>
-    <ul>
-      <li>We'll have cash prizes available for first through third place, as well as scored subcategories.</li>
-    </ul>
     <h4>Thank You To Our Sponsors</h4>
     <p>We're deeply grateful to our sponsors for their generous support of BayHacks.</p>
+    
+    <img id="sponsor-image" src="/assets/sponsors.png" />
+
+    <h5>Gold Sponsors</h5>
     <ul>
+      <li>
+        <a href="https://dexian.com/disys/">Dexian</a>
+      </li>
       <li>
         <a href="https://www.faireconomy.com/">Fair Economy</a>
       </li>
       <li>
-        <a href="https://dexian.com/disys/">Dexian | DISYS</a>
+        <a href="https://hcfl.gov/businesses/small-business-support/resources-and-training/the-edi2-program">Hillsborough County EDi2 Program</a>
       </li>
+    </ul>
+
+    <h5>Silver Sponsors</h5>
+    <ul>
       <li>
         <a href="https://www.computercoach.com/">Computer Coach</a>
+      </li>
+      <li>
+        <a href="https://www.relativitytech.com/">Relativity Tech</a>
+      </li>
+    </ul>
+
+    <h5>Bronze Sponsors</h5>
+    <ul>
+      <li>
+        <a href="https://www.certuscore.com/">Certus Core</a>
       </li>
     </ul>
   </>

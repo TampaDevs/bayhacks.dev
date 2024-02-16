@@ -39,3 +39,7 @@
   font-size: 1.4em;
   background-color: white;
 }
+
+#sponsor-image {
+  max-width: 100%;
+}
